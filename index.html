@@ -1,440 +1,1666 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="az">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#070707">
-<title>BakuShopAzerbaijan — 4 ₼ Kampaniyası</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08080b">
+<title>BakuShopAzerbaijan — V5</title>
 <style>
-:root{
- --bg:#050505;--card:#0d0d0f;--line:#ffffff12;--muted:#9a9a9f;
- --white:#fff;--accent:#8b5cf6;--accent2:#c084fc;--green:#25d366;
-}
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
- font-family:Inter,Arial,sans-serif;color:var(--white);background:
- radial-gradient(circle at 50% -10%,#322052 0,#120b1c 27%,#050505 58%);
- min-height:100vh;overflow-x:hidden
+ margin:0;
+ background:#060609;
+ color:#f7f7fb;
+ font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+ overflow-x:hidden
 }
-button,input{font:inherit}
-header{
- position:sticky;top:0;z-index:100;background:#050505c9;
- backdrop-filter:blur(20px);border-bottom:1px solid var(--line)
+body:before{
+ content:"";
+ position:fixed;
+ inset:-30%;
+ z-index:-2;
+ background:
+ radial-gradient(circle at 20% 15%,#8b5cf633,transparent 25%),
+ radial-gradient(circle at 80% 40%,#ff3cac22,transparent 24%),
+ radial-gradient(circle at 50% 100%,#4f46e522,transparent 28%);
+ filter:blur(35px);
+ animation:bg 16s ease-in-out infinite alternate
+}
+@keyframes bg{
+ to{transform:translate(3%,2%) scale(1.08) rotate(6deg)}
+}
+@keyframes rise{
+ from{opacity:0;transform:translateY(24px)}
+ to{opacity:1;transform:none}
+}
+.top{
+ position:sticky;
+ top:0;
+ z-index:50;
+ border-bottom:1px solid #ffffff12;
+ background:#060609d9;
+ backdrop-filter:blur(20px)
 }
 .nav{
- max-width:1400px;margin:auto;padding:16px 24px;display:flex;
- align-items:center;justify-content:space-between
+ max-width:1450px;
+ margin:auto;
+ display:flex;
+ gap:10px;
+ align-items:center;
+ padding:13px 20px
 }
-.logo{font-size:20px;font-weight:900;letter-spacing:-.7px}
-.logo span{color:var(--accent2)}
-.cartBtn{
- border:1px solid var(--line);background:#ffffff08;color:white;
- padding:11px 16px;border-radius:14px;cursor:pointer
+.brand{
+ font-size:19px;
+ font-weight:950;
+ letter-spacing:-.8px;
+ margin-right:auto
 }
-.cartBtn:hover{background:#8b5cf622;border-color:#8b5cf655}
-.hero{max-width:1400px;margin:auto;padding:80px 24px 42px}
-.badge{
- display:inline-flex;padding:8px 13px;border-radius:99px;
- border:1px solid #ffffff16;background:#ffffff08;color:#d9ceff;font-size:12px
+.brand span{color:#c4b5fd}
+.btn,.select,.search{
+ border:1px solid #ffffff16;
+ background:#ffffff08;
+ color:#fff;
+ border-radius:12px
 }
-.hero h1{
- font-size:clamp(48px,7.5vw,94px);line-height:.9;letter-spacing:-6px;margin:20px 0
+.btn{
+ padding:10px 13px;
+ cursor:pointer
 }
-.hero h1 span{
- background:linear-gradient(90deg,#fff,#b18cff);-webkit-background-clip:text;
- color:transparent
+.select{padding:10px}
+.select option{background:#111}
+.hero{
+ max-width:1450px;
+ margin:auto;
+ padding:75px 20px 35px;
+ animation:rise .7s
 }
-.hero p{max-width:680px;color:var(--muted);line-height:1.7;font-size:15px}
-.shop{max-width:1400px;margin:auto;padding:25px 24px 100px}
-.toolbar{display:flex;gap:12px;margin-bottom:24px}
+.pill{
+ display:inline-flex;
+ padding:8px 12px;
+ border:1px solid #a78bfa44;
+ background:#8b5cf612;
+ border-radius:99px;
+ color:#d8b4fe;
+ font-size:11px;
+ font-weight:800
+}
+h1{
+ font-size:clamp(48px,7vw,96px);
+ line-height:.9;
+ letter-spacing:-6px;
+ margin:18px 0 20px
+}
+.gradient{
+ background:linear-gradient(100deg,#fff,#c4b5fd,#f0abfc);
+ color:transparent;
+ background-clip:text;
+ -webkit-background-clip:text
+}
+.hero p{
+ max-width:720px;
+ color:#9b9ba7;
+ line-height:1.7
+}
+.notice{
+ max-width:1450px;
+ margin:auto;
+ padding:0 20px 22px
+}
+.notice>div{
+ padding:14px 16px;
+ border:1px solid #facc1533;
+ background:#facc1509;
+ border-radius:15px;
+ color:#ddd;
+ font-size:13px;
+ line-height:1.6
+}
+.profile,.admin{
+ max-width:1450px;
+ margin:auto;
+ padding:0 20px 20px;
+ display:none
+}
+.panel{
+ border:1px solid #ffffff13;
+ background:#ffffff06;
+ border-radius:18px;
+ padding:15px
+}
+.profilegrid{
+ display:flex;
+ gap:14px;
+ align-items:center;
+ flex-wrap:wrap
+}
+.xp{
+ height:8px;
+ min-width:180px;
+ flex:1;
+ background:#ffffff0c;
+ border-radius:99px;
+ overflow:hidden
+}
+.xp i{
+ display:block;
+ height:100%;
+ width:0;
+ background:linear-gradient(90deg,#8b5cf6,#f0abfc);
+ transition:1s
+}
+.shop{
+ max-width:1450px;
+ margin:auto;
+ padding:10px 20px 90px
+}
+.tools{
+ display:flex;
+ gap:10px;
+ margin-bottom:18px
+}
 .search{
- width:100%;background:#ffffff08;border:1px solid var(--line);
- color:white;padding:14px 17px;border-radius:14px;outline:none
+ flex:1;
+ padding:14px;
+ outline:0
 }
-.search:focus{border-color:#8b5cf699}
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:15px
+}
 .card{
- background:linear-gradient(145deg,#131316,#0a0a0b);border:1px solid var(--line);
- border-radius:18px;overflow:hidden;position:relative;
- transition:.28s;box-shadow:0 15px 45px #0005
+ background:linear-gradient(145deg,#15151b,#09090c);
+ border:1px solid #ffffff12;
+ border-radius:18px;
+ overflow:hidden;
+ box-shadow:0 20px 60px #0008;
+ animation:rise .55s both;
+ transition:.3s
 }
 .card:hover{
- transform:translateY(-7px);border-color:#a78bfa55;
- box-shadow:0 25px 70px #0009,0 0 35px #8b5cf61c
+ transform:translateY(-7px);
+ border-color:#a78bfa66;
+ box-shadow:0 30px 80px #000b,0 0 30px #8b5cf622
 }
 .cover{
- aspect-ratio:2/3;position:relative;overflow:hidden;background:#17121f
+ aspect-ratio:2/3;
+ background:#111;
+ overflow:hidden;
+ position:relative
 }
 .cover img{
- width:100%;height:100%;object-fit:cover;display:block;transition:.5s
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ transition:.6s
 }
-.card:hover .cover img{transform:scale(1.055)}
+.card:hover img{transform:scale(1.07)}
 .cover:after{
- content:"";position:absolute;inset:0;
- background:linear-gradient(to top,rgba(0,0,0,.65),transparent 45%);
- pointer-events:none
+ content:"";
+ position:absolute;
+ inset:0;
+ background:linear-gradient(0deg,#000d,transparent 48%)
 }
-.info{padding:14px}
-.info h3{font-size:14px;line-height:1.35;min-height:38px}
-.bottom{
- margin-top:13px;display:flex;align-items:center;justify-content:space-between;gap:7px
+.info{padding:12px}
+.name{
+ font-size:13px;
+ font-weight:800;
+ line-height:1.4;
+ min-height:38px
 }
-.price{font-size:18px;font-weight:900;white-space:nowrap;display:flex;align-items:center;gap:7px}.oldPrice{text-decoration:line-through;color:#777;font-size:12px;font-weight:600}.salePrice{color:#fff}
+.bar{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:8px;
+ margin-top:12px
+}
+.price{
+ font-weight:950;
+ font-size:18px
+}
+.old{
+ text-decoration:line-through;
+ color:#777;
+ font-size:11px;
+ margin-left:5px;
+ font-weight:600
+}
 .add{
- border:0;background:linear-gradient(135deg,var(--accent),var(--accent2));
- color:#fff;padding:9px 11px;border-radius:10px;font-size:12px;
- font-weight:800;cursor:pointer
+ border:0;
+ border-radius:10px;
+ padding:9px 11px;
+ background:linear-gradient(135deg,#7c3aed,#d8b4fe);
+ color:#fff;
+ font-weight:900;
+ cursor:pointer;
+ position:relative;
+ overflow:hidden
 }
-.add:active{transform:scale(.95)}
-.empty{text-align:center;color:#777;padding:60px;grid-column:1/-1}
-footer{text-align:center;border-top:1px solid var(--line);padding:28px;color:#555;font-size:12px}
-
-/* cart */
-.overlay{
- position:fixed;inset:0;background:#000b;backdrop-filter:blur(8px);
- z-index:200;opacity:0;visibility:hidden;transition:.25s
-}
-.overlay.open{opacity:1;visibility:visible}
-.drawer{
- position:absolute;right:0;top:0;width:min(450px,100%);height:100%;
- background:#0a0a0b;border-left:1px solid var(--line);
- padding:22px;display:flex;flex-direction:column
-}
-.cartHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.close{
- width:40px;height:40px;border:1px solid var(--line);background:#ffffff08;
- color:white;border-radius:12px;font-size:23px;cursor:pointer
-}
-.items{flex:1;overflow:auto}
-.item{
- display:flex;gap:11px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)
-}
-.mini{width:55px;height:75px;object-fit:cover;border-radius:9px;background:#21182e}
-.itemInfo{flex:1}.itemInfo h4{font-size:13px;line-height:1.35}
-.itemInfo small{color:#888}
-.qty{display:flex;gap:7px;align-items:center;margin-top:7px}
-.qty button{
- width:25px;height:25px;background:#19191b;border:1px solid var(--line);
- color:white;border-radius:7px;cursor:pointer
-}
-.remove{border:0;background:none;color:#ff6680;cursor:pointer;font-size:12px}
-.cartFoot{border-top:1px solid var(--line);padding-top:17px}
-.total{display:flex;justify-content:space-between;font-size:21px;font-weight:900;margin-bottom:15px}
-.whatsapp{
- width:100%;padding:15px;border:0;border-radius:13px;background:var(--green);
- color:#06190c;font-weight:900;cursor:pointer
-}
-.note{text-align:center;color:#666;font-size:11px;line-height:1.5;margin-top:9px}
-
-
-/* ===== V5 POWER ANIMATIONS ===== */
-body:before{
- content:"";position:fixed;inset:-30%;pointer-events:none;z-index:-1;
- background:
- radial-gradient(circle at 20% 20%,#8b5cf614 0 12%,transparent 28%),
- radial-gradient(circle at 80% 70%,#c084fc10 0 10%,transparent 25%);
- animation:aurora 12s ease-in-out infinite alternate;
-}
-@keyframes aurora{0%{transform:translate3d(-2%,-1%,0) rotate(0deg) scale(1)}100%{transform:translate3d(3%,2%,0) rotate(7deg) scale(1.08)}}
-.hero{animation:heroIn .9s cubic-bezier(.2,.8,.2,1) both}
-@keyframes heroIn{from{opacity:0;transform:translateY(30px);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
-.card{animation:cardIn .65s cubic-bezier(.2,.8,.2,1) both}
-@keyframes cardIn{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
-.card:before{
- content:"";position:absolute;inset:-2px;border-radius:20px;pointer-events:none;
- background:conic-gradient(from 0deg,transparent,#a78bfa55,transparent 25%,#c084fc33,transparent 55%);
- opacity:0;transition:.35s;filter:blur(7px)
-}
-.card:hover:before{opacity:1;animation:spinGlow 2.5s linear infinite}
-@keyframes spinGlow{to{transform:rotate(360deg)}}
-.card:hover .info{background:linear-gradient(90deg,#ffffff03,#8b5cf610,#ffffff03);background-size:200% 100%;animation:shine 1.5s linear infinite}
-@keyframes shine{to{background-position:-200% 0}}
-.add{position:relative;overflow:hidden;box-shadow:0 7px 24px #8b5cf633}
 .add:after{
- content:"";position:absolute;top:-60%;left:-120%;width:55%;height:220%;
- background:linear-gradient(90deg,transparent,#fff7,transparent);transform:rotate(18deg);
- transition:.55s
+ content:"";
+ position:absolute;
+ top:-100%;
+ left:-130%;
+ width:50%;
+ height:300%;
+ background:#fff5;
+ transform:rotate(20deg);
+ transition:.5s
 }
-.add:hover:after{left:140%}
-.add:hover{box-shadow:0 10px 35px #8b5cf655;filter:brightness(1.12)}
-.cartBtn{position:relative;overflow:hidden}
-.cartBtn:after{
- content:"";position:absolute;inset:0;border-radius:inherit;
- background:linear-gradient(120deg,transparent,#fff1,transparent);
- transform:translateX(-120%);transition:.5s
+.add:hover:after{left:150%}
+.overlay{
+ position:fixed;
+ inset:0;
+ z-index:100;
+ background:#000b;
+ backdrop-filter:blur(8px);
+ opacity:0;
+ pointer-events:none;
+ transition:.25s
 }
-.cartBtn:hover:after{transform:translateX(120%)}
-.cartPulse{animation:cartPulse .45s ease}
-@keyframes cartPulse{50%{transform:scale(1.13);box-shadow:0 0 25px #8b5cf655}}
-.overlay.open .drawer{animation:drawerIn .4s cubic-bezier(.2,.8,.2,1)}
-@keyframes drawerIn{from{transform:translateX(100%);opacity:.5}to{transform:none;opacity:1}}
-.item{animation:itemIn .35s ease both}
-@keyframes itemIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
-
-/* responsive */
-@media(max-width:1150px){.grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:850px){.grid{grid-template-columns:repeat(3,1fr)}}
+.overlay.open{
+ opacity:1;
+ pointer-events:auto
+}
+.drawer{
+ position:absolute;
+ right:0;
+ top:0;
+ width:min(480px,100%);
+ height:100%;
+ background:#0b0b0f;
+ border-left:1px solid #ffffff16;
+ padding:20px;
+ display:flex;
+ flex-direction:column;
+ animation:rise .3s
+}
+.items{
+ flex:1;
+ overflow:auto
+}
+.item{
+ display:flex;
+ gap:10px;
+ padding:12px 0;
+ border-bottom:1px solid #ffffff10
+}
+.item img{
+ width:52px;
+ height:72px;
+ object-fit:cover;
+ border-radius:8px
+}
+.grow{flex:1}
+.grow b{
+ font-size:12px;
+ line-height:1.4
+}
+.qty{
+ display:flex;
+ gap:6px;
+ align-items:center;
+ margin-top:7px
+}
+.qty button,.remove{
+ background:#ffffff09;
+ color:#fff;
+ border:1px solid #ffffff14;
+ border-radius:7px;
+ width:25px;
+ height:25px;
+ cursor:pointer
+}
+.remove{
+ border:0;
+ color:#ff6684
+}
+.cartfoot{
+ border-top:1px solid #ffffff14;
+ padding-top:14px
+}
+.total{
+ display:flex;
+ justify-content:space-between;
+ font-size:21px;
+ font-weight:950;
+ margin-bottom:12px
+}
+.wa{
+ width:100%;
+ padding:14px;
+ border:0;
+ border-radius:12px;
+ background:#25d366;
+ color:#06140b;
+ font-weight:950;
+ cursor:pointer
+}
+.modal{
+ display:none;
+ position:fixed;
+ inset:0;
+ z-index:200;
+ place-items:center;
+ padding:18px;
+ background:#000d
+}
+.modal.show{display:grid}
+.box{
+ width:min(430px,100%);
+ padding:22px;
+ border-radius:20px;
+ background:#0e0e13;
+ border:1px solid #ffffff16;
+ box-shadow:0 30px 100px #000
+}
+.field{
+ width:100%;
+ padding:12px;
+ margin:6px 0;
+ border-radius:10px;
+ border:1px solid #ffffff14;
+ background:#ffffff08;
+ color:#fff;
+ outline:0
+}
+.primary{
+ width:100%;
+ padding:12px;
+ border:0;
+ border-radius:10px;
+ background:linear-gradient(135deg,#7c3aed,#d8b4fe);
+ color:#fff;
+ font-weight:900;
+ cursor:pointer
+}
+.link{
+ border:0;
+ background:none;
+ color:#c4b5fd;
+ cursor:pointer;
+ margin-top:9px
+}
+.orders{
+ display:grid;
+ gap:8px;
+ margin-top:12px
+}
+.order{
+ padding:12px;
+ border:1px solid #ffffff12;
+ border-radius:12px;
+ background:#ffffff06
+}
+.confirm{
+ margin-top:8px;
+ border:0;
+ border-radius:9px;
+ padding:8px 11px;
+ background:#25d366;
+ font-weight:900;
+ cursor:pointer
+}
+.toast{
+ position:fixed;
+ left:50%;
+ bottom:24px;
+ z-index:300;
+ transform:translate(-50%,20px);
+ opacity:0;
+ pointer-events:none;
+ background:#15151b;
+ border:1px solid #ffffff18;
+ padding:11px 15px;
+ border-radius:12px;
+ box-shadow:0 15px 50px #0008;
+ transition:.25s
+}
+.toast.show{
+ opacity:1;
+ transform:translate(-50%,0)
+}
+footer{
+ border-top:1px solid #ffffff10;
+ text-align:center;
+ color:#666;
+ padding:25px;
+ font-size:11px
+}
+@media(max-width:1150px){
+ .grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:850px){
+ .grid{grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:600px){
- .nav{padding:13px 14px}.logo{font-size:16px}
- .cartBtn{padding:9px 12px;font-size:12px}
- .hero{padding:58px 15px 30px}
- .hero h1{font-size:50px;letter-spacing:-3px}
- .hero p{font-size:13px}
- .shop{padding:15px 10px 70px}
- .grid{grid-template-columns:repeat(2,1fr);gap:9px}
- .info{padding:10px}.info h3{font-size:12px;min-height:34px}
- .price{font-size:15px;gap:5px}.oldPrice{font-size:10px}.add{padding:8px;font-size:11px}
- .bottom{align-items:stretch;flex-direction:column}
+ .nav{padding:10px}
+ .brand{font-size:14px}
+ .nav .btn,.select{
+  padding:8px;
+  font-size:11px
+ }
+ .hero{
+  padding:55px 14px 30px
+ }
+ .hero h1{
+  font-size:50px;
+  letter-spacing:-3px
+ }
+ .notice,.shop,.profile,.admin{
+  padding-left:9px;
+  padding-right:9px
+ }
+ .grid{
+  grid-template-columns:repeat(2,1fr);
+  gap:8px
+ }
+ .info{padding:9px}
+ .name{font-size:11px}
+ .bar{display:block}
+ .price{margin-bottom:8px}
+ .add{width:100%}
 }
 </style>
 </head>
+
 <body>
 
-<header>
- <div class="nav">
-  <div class="logo">BakuShop<span>Azerbaijan</span></div>
-  <button class="cartBtn" onclick="openCart()">🛒 Səbət <b id="count">0</b></button>
- </div>
+<header class="top">
+<div class="nav">
+<div class="brand">BakuShop<span>Azerbaijan</span></div>
+
+<select class="select" id="lang" onchange="setLang(this.value)">
+<option value="az">AZ</option>
+<option value="tr">TR</option>
+<option value="en">EN</option>
+<option value="ru">RU</option>
+</select>
+
+<button class="btn" id="accountBtn" onclick="openAuth()">👤 Hesab</button>
+
+<button class="btn" onclick="openCart()">
+🛒 <span id="cartCount">0</span>
+</button>
+
+</div>
 </header>
 
 <section class="hero">
- <span class="badge">🎮 PC OYUNLARI • BAKI</span>
- <h1>Oyununu seç.<br><span>Sifarişini ver.</span></h1>
- <p>
- BakuShopAzerbaijan — oyun hesabları üçün premium görünüşlü,
- sürətli sifariş kataloqu. Oyunu seç, səbətə əlavə et və sifarişi
- WhatsApp-a göndər.
- </p>
+<span class="pill" id="tag"></span>
+
+<h1 id="title"></h1>
+
+<p id="hero"></p>
 </section>
 
-<section class="shop">
- <div class="toolbar">
-  <input id="search" class="search" placeholder="🔎 Oyun axtar..." oninput="render()">
- </div>
- <div id="grid" class="grid"></div>
+<section class="notice">
+<div id="notice"></div>
 </section>
 
-<footer>BakuShopAzerbaijan • Sifarişlər WhatsApp vasitəsilə qəbul olunur</footer>
+<section class="profile" id="profile">
+<div class="panel profilegrid">
 
-<div id="overlay" class="overlay" onclick="outside(event)">
- <aside class="drawer">
-  <div class="cartHead">
-   <h2>🛒 Səbət</h2>
-   <button class="close" onclick="closeCart()">×</button>
-  </div>
-  <div id="items" class="items"></div>
-  <div class="cartFoot">
-   <div class="total"><span>Cəmi</span><span id="total">0 ₼</span></div>
-   <button class="whatsapp" onclick="sendOrder()">WhatsApp ilə sifariş et →</button>
-   <div class="note">Sifariş hazır mesaj kimi 055 584 20 12 WhatsApp söhbətinə göndəriləcək.</div>
-  </div>
- </aside>
+<b id="userEmail"></b>
+
+<b id="userLevel"></b>
+
+<div class="xp">
+<i id="xpBar"></i>
 </div>
 
+<span id="xpText"></span>
+
+<button class="btn" onclick="logout()" id="logoutBtn"></button>
+
+</div>
+</section>
+
+<section class="admin" id="admin">
+<div class="panel">
+
+<b>🛡️ Admin</b>
+
+<div id="adminStats"></div>
+
+<div id="adminUsers"></div>
+
+<div class="orders" id="orders"></div>
+
+</div>
+</section>
+
+<main class="shop">
+
+<div class="tools">
+
+<input
+id="search"
+class="search"
+oninput="render()"
+placeholder=""
+>
+
+</div>
+
+<div class="grid" id="grid"></div>
+
+</main>
+
+<footer>
+BakuShopAzerbaijan • ₼ AZN • WhatsApp
+</footer>
+
+<div
+class="overlay"
+id="cartOverlay"
+onclick="if(event.target.id==='cartOverlay')closeCart()"
+>
+
+<aside class="drawer">
+
+<div style="display:flex;justify-content:space-between;align-items:center">
+
+<h2 id="cartTitle">🛒 Səbət</h2>
+
+<button
+class="remove"
+style="font-size:22px"
+onclick="closeCart()"
+>
+×
+</button>
+
+</div>
+
+<div class="items" id="items"></div>
+
+<div class="cartfoot">
+
+<div class="total">
+
+<span id="sum"></span>
+
+<span id="total">0 ₼</span>
+
+</div>
+
+<button
+class="wa"
+id="orderBtn"
+onclick="order()"
+></button>
+
+</div>
+
+</aside>
+
+</div>
+
+<div class="modal" id="auth">
+
+<div class="box">
+
+<h2 id="authTitle"></h2>
+
+<input
+class="field"
+id="email"
+type="email"
+placeholder="E-poçt"
+>
+
+<input
+class="field"
+id="pass"
+type="password"
+placeholder="Şifrə (ən azı 8 simvol)"
+>
+
+<button
+class="primary"
+id="authSubmit"
+onclick="authSubmit()"
+></button>
+
+<button
+class="link"
+id="authToggle"
+onclick="toggleAuth()"
+></button>
+
+<button
+class="link"
+onclick="closeAuth()"
+>
+Bağla
+</button>
+
+</div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
+
 const WA="994555842012";
 
-/*
-  Şəkillər Steam CDN-dən gəlir.
-  AppID-lər oyunların Steam səhifələrinə uyğundur.
-*/
-const games=[
- ["Ghost of Tsushima DIRECTOR'S CUT",2215430,7],
- ["FIVE NIGHTS AT FREDDY'S: HELP WANTED",732690,5],
- ["Mortal Kombat 11",976310,6],
- ["City Car Driving",493490,5],
- ["DARK SOULS II: Scholar of the First Sin",335300,6],
- ["METAL GEAR SOLID 3 Δ: SNAKE EATER",2417610,10],
- ["Please, Don't Touch Anything 3D",529590,4],
- ["Poppy Playtime",1721470,6],
- ["Raft",648800,6],
- ["FC 25",2669320,7],
- ["Counter-Strike 1.6",10,3],
- ["Party Panic",506500,4],
- ["Lies of P",1627720,7],
- ["CRISIS CORE –FINAL FANTASY VII– REUNION",1608070,7],
- ["Only Up!",2381590,4],
- ["Cyberpunk 2077",1091500,7],
- ["Mafia: The Old Country",1941540,10],
- ["UNCHARTED: Legacy of Thieves Collection",1659420,8],
- ["Grand Theft Auto V Enhanced",3240220,8],
- ["Max Payne",12140,4],
- ["ARK: Survival Evolved",346110,6],
- ["Resident Evil 4",2050650,8],
- ["Black Myth: Wukong",2358720,9],
- ["Counter-Strike: Condition Zero",80,3],
- ["Kindergarten",589590,4],
- ["Football Life Simulator",2897240,5],
- ["Mafia: Definitive Edition",1030840,6],
- ["Sekiro: Shadows Die Twice",814380,8],
- ["WWE 2K19",817130,7],
- ["SUPERHOT",322500,4],
- ["Red Dead Redemption 2",1174180,8],
- ["Marvel’s Spider-Man Remastered",1817070,8],
- ["Grand Theft Auto: San Andreas",12120,5],
- ["FIFA 23",1811260,6],
- ["Five Nights at Freddy's: Security Breach",747660,6],
- ["Internet Cafe Simulator 2",1563180,5],
- ["SILENT HILL F",2454580,10],
- ["Lossless Scaling",993090,4],
- ["Left 4 Dead",500,3],
- ["Escape the Backrooms",1943950,5],
- ["Pro Evolution Soccer 2014",287680,4],
- ["Supermarket Simulator",2670630,5],
- ["Plague Inc: Evolved",246620,4],
- ["Plants vs. Zombies: GOTY",3590,4],
- ["Hello Neighbor",521890,5],
- ["Mafia II: Definitive Edition",1030830,6],
- ["Dispatch",2592160,7],
- ["Wallpaper Engine",431960,4],
- ["Call of Duty: Modern Warfare 3 (2011)",42680,6],
- ["The Last of Us Part II Remastered",2531310,10],
- ["SUPERHOT: MIND CONTROL DELETE",690040,4],
- ["God of War",1593500,8],
- ["FC 24",2195250,6],
- ["Five Nights at Freddy's 4",388090,5],
- ["Outlast",238320,4],
- ["ELDEN RING",1245620,9],
- ["Forza Horizon 5",1551360,8],
- ["Goat Simulator 3",850170,5],
- ["Grand Theft Auto: Vice City",12110,5],
- ["Grand Theft Auto IV: The Complete Edition",12210,6],
- ["Nioh 3",3182870,10],
- ["FIFA 22",1506830,6],
- ["A Plague Tale: Requiem",1182900,7],
- ["DOOM: The Dark Ages",3017860,9],
- ["Clair Obscur: Expedition 33",1903340,9],
- ["Euro Truck Simulator 2",227300,5],
- ["Garry's Mod",4000,4],
- ["The Amazing Spider-Man 2",267490,6],
- ["Resident Evil 7 Biohazard",418370,7],
- ["Kindergarten 2",1067850,4],
- ["Call of Duty 4: Modern Warfare",7940,5],
- ["Mount & Blade II Bannerlord",261550,7],
- ["Left 4 Dead 2",550,4],
- ["Red Dead Redemption",2668510,8],
- ["METAL GEAR SOLID V: THE PHANTOM PAIN",287700,7],
- ["eFootball PES 2021 SEASON UPDATE",1259970,5],
- ["Max Payne 2",12150,4],
- ["DARK SOULS: REMASTERED",570940,7],
- ["Half-Life",70,3],
- ["Call of Duty: Modern Warfare 2 (2009)",10180,5],
- ["Pacify",967050,4],
- ["Five Nights at Freddy's: Into the Pit",2233120,5],
- ["God of War Ragnarök",2322010,9],
- ["FC 26 - EA Hesabı",3459520,8],
- ["Streamer Life Simulator 2",2358040,5],
- ["Five Nights at Freddy's: Help Wanted 2",2287520,6],
- ["DARK SOULS III",374320,7],
- ["Forza Horizon 4",1293830,6],
- ["The Witcher 3: Wild Hunt",292030,6],
- ["FC 26 + Ultimate Edition",3459520,10],
+const I18N={
 
- /* Yalnız GTA V saxlanılır — digər Rockstar oyunları qəsdən əlavə edilməyib */
- ["Grand Theft Auto V",271590,7]
+az:{
+tag:"🎮 PC OYUNLARI • 4 ₼ KAMPANİYA",
+title:"Oyununu seç.<br><span class='gradient'>Sifarişini ver.</span>",
+hero:"BakuShopAzerbaijan — oyun hesabları üçün premium görünüşlü, sürətli sifariş kataloqu.",
+notice:"⚠️ Hesablar paylaşımlıdır. Hər bir oyun ayrı hesabda olur və hesabların 90%-də başqa oyunlar da olur — hədiyyə kimi.",
+search:"🔎 Oyun axtar...",
+account:"👤 Hesab",
+cart:"🛒 Səbət",
+sum:"Cəmi",
+order:"WhatsApp ilə sifariş et →",
+add:"+ Səbət",
+login:"Daxil ol",
+signup:"Qeydiyyatdan keç",
+logout:"Çıxış"
+},
+
+tr:{
+tag:"🎮 PC OYUNLARI • 4 ₼ KAMPANYA",
+title:"Oyununu seç.<br><span class='gradient'>Siparişini ver.</span>",
+hero:"BakuShopAzerbaijan — oyun hesapları için premium katalog.",
+notice:"⚠️ Hesaplar paylaşımlıdır. Her oyun ayrı hesapta olur ve hesapların %90'ında başka oyunlar da bulunur — hediye olarak.",
+search:"🔎 Oyun ara...",
+account:"👤 Hesap",
+cart:"🛒 Sepet",
+sum:"Toplam",
+order:"WhatsApp ile sipariş ver →",
+add:"+ Sepete",
+login:"Giriş yap",
+signup:"Kayıt ol",
+logout:"Çıkış"
+},
+
+en:{
+tag:"🎮 PC GAMES • 4 ₼ CAMPAIGN",
+title:"Choose your game.<br><span class='gradient'>Place your order.</span>",
+hero:"BakuShopAzerbaijan — premium game-account catalog.",
+notice:"⚠️ Accounts are shared. Each game is on a separate account, and 90% of accounts contain other games as a gift.",
+search:"🔎 Search games...",
+account:"👤 Account",
+cart:"🛒 Cart",
+sum:"Total",
+order:"Order via WhatsApp →",
+add:"+ Cart",
+login:"Log in",
+signup:"Sign up",
+logout:"Log out"
+},
+
+ru:{
+tag:"🎮 ИГРЫ ДЛЯ ПК • АКЦИЯ 4 ₼",
+title:"Выбери игру.<br><span class='gradient'>Оформи заказ.</span>",
+hero:"BakuShopAzerbaijan — премиальный каталог игровых аккаунтов.",
+notice:"⚠️ Аккаунты общие. Каждая игра находится на отдельном аккаунте, а в 90% аккаунтов есть другие игры в подарок.",
+search:"🔎 Поиск игры...",
+account:"👤 Аккаунт",
+cart:"🛒 Корзина",
+sum:"Итого",
+order:"Заказать через WhatsApp →",
+add:"+ В корзину",
+login:"Войти",
+signup:"Регистрация",
+logout:"Выйти"
+}
+
+};
+
+const raw=[
+
+["Ghost of Tsushima DIRECTOR'S CUT",2215430,7],
+["FIVE NIGHTS AT FREDDY'S: HELP WANTED",732690,5],
+["Mortal Kombat 11",976310,6],
+["City Car Driving",493490,5],
+["DARK SOULS II: Scholar of the First Sin",335300,6],
+["METAL GEAR SOLID 3 Δ: SNAKE EATER",2417610,10],
+["Please, Don't Touch Anything 3D",529590,4],
+["Poppy Playtime",1721470,6],
+["Raft",648800,6],
+["FC 25",2669320,7],
+["Counter-Strike 1.6",10,3],
+["Party Panic",506500,4],
+["Lies of P",1627720,7],
+["CRISIS CORE –FINAL FANTASY VII– REUNION",1608070,7],
+["Only Up!",2381590,4],
+["Cyberpunk 2077",1091500,7],
+["Mafia: The Old Country",1941540,10],
+["UNCHARTED: Legacy of Thieves Collection",1659420,8],
+["Grand Theft Auto V",271590,7],
+["Max Payne",12140,4],
+["ARK: Survival Evolved",346110,6],
+["Resident Evil 4 Remake",2050650,8],
+["Black Myth: Wukong",2358720,9],
+["Counter-Strike: Condition Zero",80,3],
+["Kindergarten",589590,4],
+["Football Life Simulator",2897240,5],
+["Mafia: Definitive Edition",1030840,6],
+["Sekiro: Shadows Die Twice",814380,8],
+["WWE 2K19",817130,7],
+["SUPERHOT",322500,4],
+["Red Dead Redemption 2",1174180,8],
+["Marvel’s Spider-Man Remastered",1817070,8],
+["Grand Theft Auto: San Andreas",12120,5],
+["FIFA 23",1811260,6],
+["Five Nights at Freddy's: Security Breach",747660,6],
+["Internet Cafe Simulator 2",1563180,5],
+["SILENT HILL F - Digital Deluxe Edition",2454580,10],
+["Lossless Scaling",993090,4],
+["Left 4 Dead",500,3],
+["Escape the Backrooms",1943950,5],
+["Pro Evolution Soccer 2014",287680,4],
+["Supermarket Simulator",2670630,5],
+["Plague Inc: Evolved",246620,4],
+["Plants vs. Zombies: Game of the Year",3590,4],
+["Hello Neighbor",521890,5],
+["Mafia II: Definitive Edition",1030830,6],
+["Dispatch + Digital Deluxe Edition",2592160,7],
+["Wallpaper Engine",431960,4],
+["Call of Duty: Modern Warfare 3 (2011)",42680,6],
+["The Last of Us Part II Remastered",2531310,10],
+["SUPERHOT: MIND CONTROL DELETE",690040,4],
+["God of War",1593500,8],
+["FC 24",2195250,6],
+["Five Nights at Freddy's 4",388090,5],
+["Outlast",238320,4],
+["ELDEN RING + Shadow of the Erdtree DLC",1245620,9],
+["Forza Horizon 5",1551360,8],
+["Goat Simulator 3",850170,5],
+["Grand Theft Auto: Vice City",12110,5],
+["Grand Theft Auto IV: The Complete Edition",12210,6],
+["Nioh 3 + Digital Deluxe Edition",3182870,10],
+["FIFA 22 + Ultimate Edition",1506830,6],
+["A Plague Tale: Requiem",1182900,7],
+["DOOM: The Dark Ages",3017860,9],
+["Clair Obscur: Expedition 33 + Deluxe Edition",1903340,9],
+["Euro Truck Simulator 2",227300,5],
+["Garry's Mod",4000,4],
+["The Amazing Spider-Man 2",267490,6],
+["Resident Evil 7 Biohazard",418370,7],
+["Kindergarten 2",1067850,4],
+["Call of Duty 4: Modern Warfare (2007)",7940,5],
+["Mount & Blade II Bannerlord",261550,7],
+["Left 4 Dead 2",550,4],
+["Red Dead Redemption 1",2668510,8],
+["METAL GEAR SOLID V: THE PHANTOM PAIN",287700,7],
+["eFootball PES 2021 SEASON UPDATE",1259970,5],
+["Max Payne 2",12150,4],
+["DARK SOULS: REMASTERED",570940,7],
+["ELDEN RING + DELUXE EDITION",1245620,9],
+["Half-Life",70,3],
+["Call of Duty: Modern Warfare 2 (2009)",10180,5],
+["Pacify",967050,4],
+["Five Nights at Freddy's: Into the Pit",2233120,5],
+["God of War Ragnarök",2322010,9],
+["FC 26 - EA Hesabı",3459520,8],
+["Streamer Life Simulator 2",2358040,5],
+["Five Nights at Freddy's: Help Wanted 2",2287520,6],
+["DARK SOULS III",374320,7],
+["Forza Horizon 4",1293830,6],
+["The Witcher 3: Wild Hunt",292030,6],
+["FC 26 + Ultimate Edition + Türkçe Spiker",3459520,10]
+
 ];
 
-const products=games.map((g,i)=>({
- id:i+1,name:g[0],app:g[1],price:4,oldPrice:g[2],
- image:`https://cdn.akamai.steamstatic.com/steam/apps/${g[1]}/library_600x900_2x.jpg`
+const games=raw.map((x,i)=>({
+
+id:i+1,
+name:x[0],
+app:x[1],
+old:x[2],
+price:4,
+img:`https://cdn.akamai.steamstatic.com/steam/apps/${x[1]}/library_600x900_2x.jpg`
+
 }));
 
-let cart=JSON.parse(localStorage.getItem("bsa_v4_cart")||"[]");
+let cart=JSON.parse(localStorage.getItem("bsa_cart_v5")||"[]");
 
-function save(){localStorage.setItem("bsa_v4_cart",JSON.stringify(cart))}
+let users=JSON.parse(localStorage.getItem("bsa_users_v5")||"[]");
+
+let orders=JSON.parse(localStorage.getItem("bsa_orders_v5")||"[]");
+
+let current=JSON.parse(localStorage.getItem("bsa_current_v5")||"null");
+
+let lang=localStorage.getItem("bsa_lang_v5")||"az";
+
+let mode="signup";
+
+function save(){
+
+localStorage.setItem(
+"bsa_cart_v5",
+JSON.stringify(cart)
+);
+
+localStorage.setItem(
+"bsa_users_v5",
+JSON.stringify(users)
+);
+
+localStorage.setItem(
+"bsa_orders_v5",
+JSON.stringify(orders)
+);
+
+}
+
+function toast(x){
+
+let t=document.getElementById("toast");
+
+t.textContent=x;
+
+t.classList.add("show");
+
+setTimeout(
+()=>t.classList.remove("show"),
+2200
+);
+
+}
 
 function render(){
- const q=document.getElementById("search").value.toLowerCase().trim();
- const list=products.filter(p=>p.name.toLowerCase().includes(q));
- const grid=document.getElementById("grid");
- if(!list.length){grid.innerHTML='<div class="empty">🔎 Oyun tapılmadı.</div>';return}
- grid.innerHTML=list.map(p=>`
-  <article class="card">
-   <div class="cover">
-    <img src="${p.image}" alt="${p.name}" loading="lazy"
-         onerror="this.style.display='none';this.parentElement.innerHTML='<div style=&quot;display:grid;place-items:center;height:100%;font-weight:900;padding:15px;text-align:center&quot;>${p.name}</div>'">
-   </div>
-   <div class="info">
-    <h3>${p.name}</h3>
-    <div class="bottom">
-     <span class="price"><span class="salePrice">4 ₼</span><span class="oldPrice">${p.oldPrice} ₼</span></span>
-     <button class="add" onclick="add(${p.id})">+ Səbət</button>
-    </div>
-   </div>
-  </article>
- `).join("");
- update();
+
+let q=document
+.getElementById("search")
+.value
+.toLowerCase();
+
+let list=games.filter(
+g=>g.name.toLowerCase().includes(q)
+);
+
+document.getElementById("grid").innerHTML=list.map(
+(g,i)=>`
+
+<article
+class="card"
+style="animation-delay:${Math.min(i,20)*18}ms"
+>
+
+<div class="cover">
+
+<img
+loading="lazy"
+src="${g.img}"
+alt="${g.name}"
+onerror="this.style.opacity=0"
+>
+
+</div>
+
+<div class="info">
+
+<div class="name">
+${g.name}
+</div>
+
+<div class="bar">
+
+<span class="price">
+4 ₼
+<span class="old">
+${g.old} ₼
+</span>
+</span>
+
+<button
+class="add"
+onclick="add(${g.id})"
+>
+${I18N[lang].add}
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+`).join("");
+
+updateCart();
+
 }
 
 function add(id){
- const p=products.find(x=>x.id===id);
- const x=cart.find(x=>x.id===id);
- if(x)x.qty++;else cart.push({...p,qty:1});
- save();update();animateCart();
+
+let x=cart.find(
+x=>x.id===id
+);
+
+x
+?x.qty++
+:cart.push({
+id,
+qty:1
+});
+
+save();
+
+updateCart();
+
+toast("🛒 Səbətə əlavə edildi");
+
+}
+
+function updateCart(){
+
+let n=cart.reduce(
+(a,x)=>a+x.qty,
+0
+);
+
+document.getElementById(
+"cartCount"
+).textContent=n;
+
+document.getElementById(
+"items"
+).innerHTML=cart.length
+?
+cart.map(
+x=>{
+
+let g=games.find(
+g=>g.id===x.id
+);
+
+return `
+
+<div class="item">
+
+<img src="${g.img}">
+
+<div class="grow">
+
+<b>
+${g.name}
+</b>
+
+<div style="margin-top:4px">
+
+<strong>
+4 ₼
+</strong>
+
+× ${x.qty}
+
+<s style="color:#777;font-size:11px">
+${g.old} ₼
+</s>
+
+</div>
+
+<div class="qty">
+
+<button
+onclick="change(${g.id},-1)"
+>
+−
+</button>
+
+${x.qty}
+
+<button
+onclick="change(${g.id},1)"
+>
++
+</button>
+
+</div>
+
+</div>
+
+<button
+class="remove"
+onclick="removeItem(${g.id})"
+>
+×
+</button>
+
+</div>
+
+`;
+
+}
+).join("")
+:
+"<div style='padding:60px;text-align:center;color:#777'>Səbət boşdur 🎮</div>";
+
+document.getElementById(
+"total"
+).textContent=
+n*4+" ₼";
+
+}
+
+function change(id,d){
+
+let x=cart.find(
+x=>x.id===id
+);
+
+if(!x)return;
+
+x.qty+=d;
+
+if(x.qty<1)
+removeItem(id);
+
+else{
+
+save();
+
+updateCart();
+
+}
+
 }
 
 function removeItem(id){
- cart=cart.filter(x=>x.id!==id);save();update();
+
+cart=cart.filter(
+x=>x.id!==id
+);
+
+save();
+
+updateCart();
+
 }
 
-function qty(id,d){
- const x=cart.find(x=>x.id===id);
- if(!x)return;
- x.qty+=d;
- if(x.qty<=0)cart=cart.filter(i=>i.id!==id);
- save();update();
+function openCart(){
+
+document
+.getElementById("cartOverlay")
+.classList.add("open");
+
 }
 
-function update(){
- document.getElementById("count").textContent=cart.reduce((a,x)=>a+x.qty,0);
- const box=document.getElementById("items");
- if(!cart.length){
-  box.innerHTML='<div class="empty">Səbət boşdur 🎮<br><br>Oyun əlavə et.</div>';
-  document.getElementById("total").textContent="0 ₼";return;
- }
- box.innerHTML=cart.map(x=>`
-  <div class="item">
-   <img class="mini" src="${x.image}" alt="">
-   <div class="itemInfo">
-    <h4>${x.name}</h4>
-    <small><b>4 ₼</b> × ${x.qty} &nbsp; <s>${x.oldPrice || 4} ₼</s></small>
-    <div class="qty">
-     <button onclick="qty(${x.id},-1)">−</button>
-     <span>${x.qty}</span>
-     <button onclick="qty(${x.id},1)">+</button>
-    </div>
-   </div>
-   <button class="remove" onclick="removeItem(${x.id})">Sil</button>
-  </div>
- `).join("");
- const total=cart.reduce((a,x)=>a+x.price*x.qty,0);
- document.getElementById("total").textContent=total+" ₼";
+function closeCart(){
+
+document
+.getElementById("cartOverlay")
+.classList.remove("open");
+
 }
 
-function animateCart(){
- const b=document.querySelector(".cartBtn");
- b.classList.remove("cartPulse");
- void b.offsetWidth;
- b.classList.add("cartPulse");
- setTimeout(()=>b.classList.remove("cartPulse"),500);
-}
-function openCart(){document.getElementById("overlay").classList.add("open")}
-function closeCart(){document.getElementById("overlay").classList.remove("open")}
-function outside(e){if(e.target.id==="overlay")closeCart()}
+function order(){
 
-function sendOrder(){
- if(!cart.length){alert("Səbət boşdur!");return}
- const total=cart.reduce((a,x)=>a+x.price*x.qty,0);
- let text="🎮 BakuShopAzerbaijan SİFARİŞİ\n\n";
- cart.forEach((x,i)=>{
-  text+=`${i+1}. ${x.name}\nMiqdar: ${x.qty}\nQiymət: ${x.price*x.qty} ₼\n\n`;
- });
- text+=`💰 Cəmi: ${total} ₼\n\nSalam! Bu oyunları sifariş etmək istəyirəm.`;
- window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(text),"_blank");
+if(!cart.length)
+return toast("Səbət boşdur");
+
+let text=
+"🎮 BakuShopAzerbaijan SİFARİŞİ\n\n";
+
+cart.forEach(
+(x,i)=>{
+
+let g=games.find(
+g=>g.id===x.id
+);
+
+text+=
+`${i+1}. ${g.name}\n`+
+`${x.qty} × 4 ₼\n\n`;
+
 }
+);
+
+let total=
+cart.reduce(
+(a,x)=>a+x.qty,
+0
+)*4;
+
+text+="💰 Cəmi: "+total+" ₼";
+
+if(current){
+
+orders.push({
+
+id:Date.now(),
+
+email:current.email,
+
+items:cart.map(
+x=>({
+id:x.id,
+qty:x.qty
+})
+),
+
+total,
+
+status:"pending",
+
+date:new Date().toLocaleString()
+
+});
+
+save();
+
+}
+
+window.open(
+"https://wa.me/"+WA+
+"?text="+
+encodeURIComponent(text),
+"_blank"
+);
+
+cart=[];
+
+save();
+
+updateCart();
+
+closeCart();
+
+toast(
+"✅ Sifariş yaradıldı • səbət təmizləndi"
+);
+
+}
+
+function openAuth(){
+
+document
+.getElementById("auth")
+.classList.add("show");
+
+syncAuth();
+
+}
+
+function closeAuth(){
+
+document
+.getElementById("auth")
+.classList.remove("show");
+
+}
+
+function toggleAuth(){
+
+mode=
+mode==="signup"
+?"login"
+:"signup";
+
+syncAuth();
+
+}
+
+function syncAuth(){
+
+let t=I18N[lang];
+
+document
+.getElementById("authTitle")
+.textContent=t.account;
+
+document
+.getElementById("authSubmit")
+.textContent=
+mode==="signup"
+?t.signup
+:t.login;
+
+document
+.getElementById("authToggle")
+.textContent=
+mode==="signup"
+?"Artıq hesabım var"
+:"Hesab yarat";
+
+}
+
+function authSubmit(){
+
+let email=
+document.getElementById("email")
+.value
+.trim()
+.toLowerCase();
+
+let pass=
+document.getElementById("pass")
+.value;
+
+if(
+!email||
+pass.length<8
+)
+return toast(
+"⚠️ E-poçt və ən azı 8 simvolluq şifrə lazımdır"
+);
+
+if(mode==="signup"){
+
+if(
+users.some(
+u=>u.email===email
+)
+)
+return toast(
+"Bu hesab artıq var"
+);
+
+users.push({
+
+email,
+
+pass,
+
+xp:0,
+
+gifts:0,
+
+admin:users.length===0
+
+});
+
+}
+
+let u=users.find(
+u=>
+u.email===email&&
+u.pass===pass
+);
+
+if(!u)
+return toast(
+"❌ E-poçt və ya şifrə yanlışdır"
+);
+
+current={
+email
+};
+
+localStorage.setItem(
+"bsa_current_v5",
+JSON.stringify(current)
+);
+
+save();
+
+closeAuth();
+
+refreshUser();
+
+toast(
+"👋 Xoş gəldin!"
+);
+
+}
+
+function logout(){
+
+current=null;
+
+localStorage.removeItem(
+"bsa_current_v5"
+);
+
+refreshUser();
+
+}
+
+function levelInfo(xp){
+
+let level=1;
+
+let need=100;
+
+let left=xp;
+
+while(left>=need){
+
+left-=need;
+
+level++;
+
+need=100+
+(level-1)*50;
+
+}
+
+return{
+level,
+left,
+need
+};
+
+}
+
+function refreshUser(){
+
+let p=
+document.getElementById("profile");
+
+let a=
+document.getElementById("admin");
+
+if(!current){
+
+p.style.display="none";
+
+a.style.display="none";
+
+document.getElementById(
+"accountBtn"
+).textContent=
+I18N[lang].account;
+
+return;
+
+}
+
+let u=users.find(
+u=>u.email===current.email
+);
+
+if(!u){
+
+logout();
+
+return;
+
+}
+
+p.style.display="block";
+
+document.getElementById(
+"userEmail"
+).textContent=u.email;
+
+let l=
+levelInfo(u.xp||0);
+
+document.getElementById(
+"userLevel"
+).textContent=
+"LV."+l.level;
+
+document.getElementById(
+"xpText"
+).textContent=
+`${l.left}/${l.need} XP • 🎁 ${u.gifts||0}`;
+
+document.getElementById(
+"xpBar"
+).style.width=
+Math.min(
+100,
+l.left/l.need*100
+)+"%";
+
+document.getElementById(
+"logoutBtn"
+).textContent=
+I18N[lang].logout;
+
+document.getElementById(
+"accountBtn"
+).textContent=
+"👤 "+
+u.email.split("@")[0];
+
+if(u.admin){
+
+a.style.display="block";
+
+renderAdmin();
+
+}else{
+
+a.style.display="none";
+
+}
+
+}
+
+function renderAdmin(){
+
+let pending=
+orders.filter(
+o=>o.status==="pending"
+);
+
+document.getElementById(
+"adminStats"
+).textContent=
+`İstifadəçi: ${users.length} • Gözləyən sifariş: ${pending.length}`;
+
+document.getElementById(
+"adminUsers"
+).innerHTML=
+"<div style='margin-top:10px;font-size:12px;color:#aaa'>Admin seçimi:</div>"+
+users.map(
+u=>
+`<button class="btn"
+style="margin:7px 5px 0 0"
+onclick="toggleAdmin('${encodeURIComponent(u.email)}')">
+${u.admin?"🛡️ ":""}${u.email}
+</button>`
+).join("");
+
+document.getElementById(
+"orders"
+).innerHTML=
+pending.length
+?
+pending.map(
+o=>
+`<div class="order">
+
+<b>
+📦 ${o.email}
+</b>
+
+<br>
+
+<small>
+${o.date} • ${o.total} ₼
+</small>
+
+<br>
+
+${o.items.map(
+x=>{
+
+let g=
+games.find(
+g=>g.id===x.id
+);
+
+return `${g.name} × ${x.qty}`;
+
+}
+).join("<br>")}
+
+<br>
+
+<button
+class="confirm"
+onclick="confirmOrder(${o.id})"
+>
+✓ Təsdiqlə və XP ver
+</button>
+
+</div>`
+).join("")
+:
+"<small style='color:#777'>Gözləyən sifariş yoxdur.</small>";
+
+}
+
+function toggleAdmin(e){
+
+let u=
+users.find(
+u=>u.email===decodeURIComponent(e)
+);
+
+if(u){
+
+u.admin=!u.admin;
+
+save();
+
+refreshUser();
+
+}
+
+}
+
+function confirmOrder(id){
+
+let o=
+orders.find(
+o=>o.id===id
+);
+
+if(!o)return;
+
+let u=
+users.find(
+u=>u.email===o.email
+);
+
+if(!u)return;
+
+let before=
+levelInfo(
+u.xp||0
+).level;
+
+u.xp=
+(u.xp||0)+
+o.items.reduce(
+(a,x)=>a+x.qty,
+0
+)*25;
+
+let after=
+levelInfo(
+u.xp
+).level;
+
+[
+3,
+5,
+10,
+15,
+20,
+25
+].forEach(
+n=>{
+
+if(
+before<n&&
+after>=n
+)
+u.gifts=
+(u.gifts||0)+1;
+
+}
+);
+
+o.status="confirmed";
+
+save();
+
+refreshUser();
+
+toast(
+"✅ Sifariş təsdiqləndi • XP verildi"
+);
+
+}
+
+function setLang(l){
+
+lang=l;
+
+localStorage.setItem(
+"bsa_lang_v5",
+l
+);
+
+applyLang();
+
+}
+
+function applyLang(){
+
+let t=I18N[lang];
+
+document.getElementById(
+"tag"
+).textContent=t.tag;
+
+document.getElementById(
+"title"
+).innerHTML=t.title;
+
+document.getElementById(
+"hero"
+).textContent=t.hero;
+
+document.getElementById(
+"notice"
+).textContent=t.notice;
+
+document.getElementById(
+"search"
+).placeholder=t.search;
+
+document.getElementById(
+"cartTitle"
+).textContent=t.cart;
+
+document.getElementById(
+"sum"
+).textContent=t.sum;
+
+document.getElementById(
+"orderBtn"
+).textContent=t.order;
+
+document.getElementById(
+"accountBtn"
+).textContent=
+current
+?
+"👤 "+
+current.email.split("@")[0]
+:
+t.account;
+
+syncAuth();
 
 render();
-update();
+
+}
+
+applyLang();
+
+refreshUser();
+
 </script>
+
 </body>
 </html>
