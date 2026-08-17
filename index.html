@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+
+<title>BakuShopAzerbaijan | PC Games</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#070707;
+    --card:#111111;
+    --card2:#171717;
+    --text:#ffffff;
+    --muted:#999999;
+    --purple:#7c5cff;
+    --purple2:#a98cff;
+    --green:#20c46b;
+    --red:#ff5577;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at 50% -15%,#30245b 0%,#120d20 25%,#070707 55%);
+    color:var(--text);
+    min-height:100vh;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(7,7,7,.82);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.navbar{
+    width:min(1200px,100%);
+    margin:auto;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:-.6px;
+}
+
+.logo span{
+    color:var(--purple2);
+}
+
+.cart-button{
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);
+    color:white;
+    padding:11px 16px;
+    border-radius:13px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.cart-button:hover{
+    background:rgba(124,92,255,.18);
+    border-color:rgba(124,92,255,.5);
+}
+
+.cart-count{
+    color:var(--purple2);
+    font-weight:bold;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    width:min(1200px,100%);
+    margin:auto;
+    padding:80px 20px 45px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 13px;
+    border-radius:100px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.05);
+    color:#d6ceff;
+    font-size:12px;
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,82px);
+    line-height:.95;
+    letter-spacing:-5px;
+    margin:20px 0;
+}
+
+.hero h1 span{
+    color:var(--purple2);
+}
+
+.hero p{
+    max-width:650px;
+    color:var(--muted);
+    line-height:1.7;
+    font-size:15px;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products{
+    width:min(1200px,100%);
+    margin:auto;
+    padding:20px 20px 100px;
+}
+
+.toolbar{
+    display:flex;
+    gap:10px;
+    margin-bottom:25px;
+}
+
+.search{
+    width:100%;
+    padding:14px 17px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:14px;
+    outline:none;
+    color:white;
+    font-size:14px;
+}
+
+.search:focus{
+    border-color:rgba(124,92,255,.7);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+    background:linear-gradient(145deg,#161616,#0d0d0d);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    overflow:hidden;
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(124,92,255,.4);
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.cover{
+    height:200px;
+    display:grid;
+    place-items:center;
+    background:
+        radial-gradient(circle at 30% 30%,#5d45a0,#211936 50%,#0e0e0e);
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:-2px;
+}
+
+.info{
+    padding:18px;
+}
+
+.info h3{
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+.info p{
+    color:#888;
+    font-size:13px;
+    line-height:1.5;
+    min-height:40px;
+}
+
+.product-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-top:18px;
+}
+
+.price{
+    font-size:20px;
+    font-weight:900;
+}
+
+.add-button{
+    border:none;
+    background:linear-gradient(135deg,var(--purple),var(--purple2));
+    color:white;
+    padding:11px 15px;
+    border-radius:11px;
+    cursor:pointer;
+    font-weight:800;
+    transition:.2s;
+}
+
+.add-button:hover{
+    transform:scale(1.04);
+}
+
+.add-button:active{
+    transform:scale(.96);
+}
+
+/* ================= CART OVERLAY ================= */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    backdrop-filter:blur(7px);
+    z-index:200;
+    opacity:0;
+    visibility:hidden;
+    transition:.25s;
+}
+
+.overlay.open{
+    opacity:1;
+    visibility:visible;
+}
+
+.cart-drawer{
+    position:absolute;
+    right:0;
+    top:0;
+    height:100%;
+    width:min(450px,100%);
+    background:#0c0c0c;
+    border-left:1px solid rgba(255,255,255,.1);
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+}
+
+.cart-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.cart-header h2{
+    font-size:25px;
+}
+
+.close-button{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.06);
+    color:white;
+    font-size:24px;
+    cursor:pointer;
+}
+
+.cart-items{
+    flex:1;
+    overflow-y:auto;
+}
+
+.cart-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:15px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.cart-thumb{
+    width:58px;
+    height:58px;
+    flex-shrink:0;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#33245c,#17121f);
+    font-size:11px;
+    font-weight:900;
+}
+
+.cart-info{
+    flex:1;
+}
+
+.cart-info h4{
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.cart-info small{
+    color:#888;
+}
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:7px;
+}
+
+.quantity button{
+    width:25px;
+    height:25px;
+    border-radius:7px;
+    border:1px solid rgba(255,255,255,.1);
+    background:#191919;
+    color:white;
+    cursor:pointer;
+}
+
+.remove{
+    background:none;
+    border:none;
+    color:var(--red);
+    cursor:pointer;
+}
+
+/* ================= TOTAL ================= */
+
+.cart-footer{
+    border-top:1px solid rgba(255,255,255,.1);
+    padding-top:18px;
+}
+
+.total-row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    font-size:21px;
+    font-weight:900;
+}
+
+.whatsapp-button{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:var(--green);
+    color:#03160a;
+    font-weight:900;
+    cursor:pointer;
+    font-size:15px;
+    transition:.2s;
+}
+
+.whatsapp-button:hover{
+    filter:brightness(1.08);
+    transform:translateY(-1px);
+}
+
+.cart-note{
+    text-align:center;
+    color:#666;
+    font-size:11px;
+    line-height:1.5;
+    margin-top:10px;
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+    color:#777;
+    padding:35px 0;
+    text-align:center;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    color:#555;
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:30px 20px;
+    font-size:12px;
+}
+
+/* ================= TABLET ================= */
+
+@media(max-width:850px){
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero{
+        padding-top:60px;
+    }
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:550px){
+
+    .navbar{
+        padding:13px 15px;
+    }
+
+    .logo{
+        font-size:16px;
+    }
+
+    .cart-button{
+        padding:9px 12px;
+        font-size:12px;
+    }
+
+    .hero{
+        padding:55px 15px 35px;
+    }
+
+    .hero h1{
+        font-size:48px;
+        letter-spacing:-3px;
+    }
+
+    .hero p{
+        font-size:13px;
+    }
+
+    .products{
+        padding:15px 12px 70px;
+    }
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .cover{
+        height:125px;
+        font-size:21px;
+    }
+
+    .info{
+        padding:12px;
+    }
+
+    .info h3{
+        font-size:15px;
+    }
+
+    .info p{
+        font-size:11px;
+        min-height:48px;
+    }
+
+    .product-bottom{
+        align-items:stretch;
+        flex-direction:column;
+    }
+
+    .price{
+        font-size:17px;
+    }
+
+    .add-button{
+        width:100%;
+        padding:9px;
+        font-size:12px;
+    }
+
+    .cart-drawer{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="navbar">
+
+    <div class="logo">
+        BakuShop<span>Azerbaijan</span>
+    </div>
+
+    <button class="cart-button" onclick="openCart()">
+        🛒 Səbət
+        <span class="cart-count" id="cartCount">0</span>
+    </button>
+
+</div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <span class="badge">
+        🎮 PC OYUNLARI • BAKI
+    </span>
+
+    <h1>
+        Oyununu seç.<br>
+        <span>Sifarişini ver.</span>
+    </h1>
+
+    <p>
+        BakuShopAzerbaijan — PC oyunları üçün
+        sürətli sifariş sistemi. Oyunları səbətə əlavə et,
+        sifarişini hazırla və WhatsApp vasitəsilə bizə göndər.
+    </p>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section class="products">
+
+    <div class="toolbar">
+
+        <input
+            id="search"
+            class="search"
+            type="text"
+            placeholder="🔎 Oyun axtar..."
+            oninput="renderProducts()"
+        >
+
+    </div>
+
+    <div id="productsGrid" class="grid"></div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    BakuShopAzerbaijan
+    <br><br>
+    Sifarişlər WhatsApp vasitəsilə qəbul olunur.
+
+</footer>
+
+
+<!-- ================= CART ================= -->
+
+<div
+    id="overlay"
+    class="overlay"
+    onclick="outsideClick(event)"
+>
+
+    <aside class="cart-drawer">
+
+        <div class="cart-header">
+
+            <h2>🛒 Səbət</h2>
+
+            <button
+                class="close-button"
+                onclick="closeCart()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="cartItems"
+            class="cart-items"
+        ></div>
+
+
+        <div class="cart-footer">
+
+            <div class="total-row">
+
+                <span>Cəmi</span>
+
+                <span id="total">
+                    0 ₼
+                </span>
+
+            </div>
+
+
+            <button
+                class="whatsapp-button"
+                onclick="sendOrder()"
+            >
+                WhatsApp ilə sifariş et →
+            </button>
+
+
+            <p class="cart-note">
+
+                Düyməyə basdıqda WhatsApp açılacaq
+                və sifariş məlumatların avtomatik
+                mesaj kimi hazırlanacaq.
+
+            </p>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   BAKUSHOPAZERBAIJAN
+   WHATSAPP NUMBER
+   ===================================================== */
+
+const WHATSAPP_NUMBER = "994555842012";
+
+
+/* =====================================================
+   PRODUCTS
+   Buradan oyun əlavə/silmək olar.
+   ===================================================== */
+
+const products = [
+
+    {
+        id:1,
+        name:"GTA V",
+        price:5,
+        description:"PC • Offline hesab",
+        tag:"GTA V"
+    },
+
+    {
+        id:2,
+        name:"Red Dead Redemption 2",
+        price:7,
+        description:"PC • Offline hesab",
+        tag:"RDR2"
+    },
+
+    {
+        id:3,
+        name:"FC 26",
+        price:7,
+        description:"PC • Oyun hesabı",
+        tag:"FC 26"
+    },
+
+    {
+        id:4,
+        name:"Cyberpunk 2077",
+        price:7,
+        description:"PC • Offline hesab",
+        tag:"CP2077"
+    },
+
+    {
+        id:5,
+        name:"Forza Horizon 5",
+        price:7,
+        description:"PC • Offline hesab",
+        tag:"FH5"
+    },
+
+    {
+        id:6,
+        name:"FNAF Collection",
+        price:5,
+        description:"PC • Oyun hesabı",
+        tag:"FNAF"
+    }
+
+];
+
+
+/* =====================================================
+   CART
+   ===================================================== */
+
+let cart =
+    JSON.parse(
+        localStorage.getItem("bakuShopCart")
+    ) || [];
+
+
+/* =====================================================
+   SAVE CART
+   ===================================================== */
+
+function saveCart(){
+
+    localStorage.setItem(
+        "bakuShopCart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+/* =====================================================
+   RENDER PRODUCTS
+   ===================================================== */
+
+function renderProducts(){
+
+    const searchInput =
+        document.getElementById("search");
+
+    const search =
+        searchInput.value
+        .toLowerCase()
+        .trim();
+
+
+    const filtered =
+        products.filter(product =>
+            product.name
+            .toLowerCase()
+            .includes(search)
+        );
+
+
+    const grid =
+        document.getElementById("productsGrid");
+
+
+    if(filtered.length === 0){
+
+        grid.innerHTML = `
+            <div class="empty">
+                🔎 Oyun tapılmadı.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+        filtered.map(product => `
+
+            <article class="card">
+
+                <div class="cover">
+
+                    ${product.tag}
+
+                </div>
+
+
+                <div class="info">
+
+                    <h3>
+                        ${product.name}
+                    </h3>
+
+
+                    <p>
+                        ${product.description}
+                    </p>
+
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+
+                            ${product.price} ₼
+
+                        </span>
+
+
+                        <button
+                            class="add-button"
+                            onclick="addToCart(${product.id})"
+                        >
+
+                            + Səbət
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        `).join("");
+
+}
+
+
+/* =====================================================
+   ADD TO CART
+   ===================================================== */
+
+function addToCart(id){
+
+    const product =
+        products.find(
+            item => item.id === id
+        );
+
+
+    if(!product) return;
+
+
+    const existing =
+        cart.find(
+            item => item.id === id
+        );
+
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+
+            ...product,
+
+            quantity:1
+
+        });
+
+    }
+
+
+    saveCart();
+
+    updateCart();
+
+    openCart();
+
+}
+
+
+/* =====================================================
+   REMOVE PRODUCT
+   ===================================================== */
+
+function removeFromCart(id){
+
+    cart =
+        cart.filter(
+            item => item.id !== id
+        );
+
+
+    saveCart();
+
+    updateCart();
+
+}
+
+
+/* =====================================================
+   CHANGE QUANTITY
+   ===================================================== */
+
+function changeQuantity(id,change){
+
+    const product =
+        cart.find(
+            item => item.id === id
+        );
+
+
+    if(!product) return;
+
+
+    product.quantity += change;
+
+
+    if(product.quantity <= 0){
+
+        removeFromCart(id);
+
+        return;
+
+    }
+
+
+    saveCart();
+
+    updateCart();
+
+}
+
+
+/* =====================================================
+   UPDATE CART
+   ===================================================== */
+
+function updateCart(){
+
+    const count =
+        cart.reduce(
+            (sum,item) =>
+                sum + item.quantity,
+            0
+        );
+
+
+    document.getElementById(
+        "cartCount"
+    ).textContent = count;
+
+
+    const container =
+        document.getElementById(
+            "cartItems"
+        );
+
+
+    if(cart.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                Səbət boşdur 🎮
+
+                <br><br>
+
+                İlk oyunu əlavə et.
+
+            </div>
+
+        `;
+
+
+        document.getElementById(
+            "total"
+        ).textContent = "0 ₼";
+
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        cart.map(item => `
+
+            <div class="cart-item">
+
+                <div class="cart-thumb">
+
+                    ${item.tag}
+
+                </div>
+
+
+                <div class="cart-info">
+
+                    <h4>
+                        ${item.name}
+                    </h4>
+
+
+                    <small>
+
+                        ${item.price} ₼ ×
+                        ${item.quantity}
+
+                    </small>
+
+
+                    <div class="quantity">
+
+                        <button
+                            onclick="changeQuantity(${item.id},-1)"
+                        >
+                            −
+                        </button>
+
+
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+
+                        <button
+                            onclick="changeQuantity(${item.id},1)"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="remove"
+                    onclick="removeFromCart(${item.id})"
+                >
+                    Sil
+                </button>
+
+            </div>
+
+        `).join("");
+
+
+    const total =
+        cart.reduce(
+            (sum,item) =>
+                sum +
+                item.price *
+                item.quantity,
+            0
+        );
+
+
+    document.getElementById(
+        "total"
+    ).textContent =
+        total.toFixed(2)
+        .replace(".00","") +
+        " ₼";
+
+}
+
+
+/* =====================================================
+   OPEN CART
+   ===================================================== */
+
+function openCart(){
+
+    document
+        .getElementById("overlay")
+        .classList.add("open");
+
+}
+
+
+/* =====================================================
+   CLOSE CART
+   ===================================================== */
+
+function closeCart(){
+
+    document
+        .getElementById("overlay")
+        .classList.remove("open");
+
+}
+
+
+/* =====================================================
+   CLICK OUTSIDE CART
+   ===================================================== */
+
+function outsideClick(event){
+
+    if(event.target.id === "overlay"){
+
+        closeCart();
+
+    }
+
+}
+
+
+/* =====================================================
+   SEND ORDER TO WHATSAPP
+   ===================================================== */
+
+function sendOrder(){
+
+    if(cart.length === 0){
+
+        alert(
+            "Səbət boşdur!"
+        );
+
+        return;
+
+    }
+
+
+    const total =
+        cart.reduce(
+            (sum,item) =>
+                sum +
+                item.price *
+                item.quantity,
+            0
+        );
+
+
+    let message =
+
+`🎮 BakuShopAzerbaijan SİFARİŞİ
+
+`;
+
+
+    cart.forEach(
+        (item,index) => {
+
+            const subtotal =
+                item.price *
+                item.quantity;
+
+
+            message +=
+
+`${index + 1}. ${item.name}
+Miqdar: ${item.quantity}
+Qiymət: ${subtotal} ₼
+
+`;
+
+        }
+    );
+
+
+    message +=
+
+`💰 Cəmi: ${total} ₼
+
+Salam! Bu oyunları sifariş etmək istəyirəm.`;
+
+
+    const whatsappURL =
+
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
+
+}
+
+
+/* =====================================================
+   INITIAL LOAD
+   ===================================================== */
+
+renderProducts();
+
+updateCart();
+
+</script>
+
+</body>
+</html>
