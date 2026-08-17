@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#070707">
-<title>BakuShopAzerbaijan — PC Oyunları</title>
+<title>BakuShopAzerbaijan — 4 ₼ Kampaniyası</title>
 <style>
 :root{
  --bg:#050505;--card:#0d0d0f;--line:#ffffff12;--muted:#9a9a9f;
@@ -79,7 +79,7 @@ header{
 .bottom{
  margin-top:13px;display:flex;align-items:center;justify-content:space-between;gap:7px
 }
-.price{font-size:18px;font-weight:900;white-space:nowrap}
+.price{font-size:18px;font-weight:900;white-space:nowrap;display:flex;align-items:center;gap:7px}.oldPrice{text-decoration:line-through;color:#777;font-size:12px;font-weight:600}.salePrice{color:#fff}
 .add{
  border:0;background:linear-gradient(135deg,var(--accent),var(--accent2));
  color:#fff;padding:9px 11px;border-radius:10px;font-size:12px;
@@ -126,6 +126,51 @@ footer{text-align:center;border-top:1px solid var(--line);padding:28px;color:#55
 }
 .note{text-align:center;color:#666;font-size:11px;line-height:1.5;margin-top:9px}
 
+
+/* ===== V5 POWER ANIMATIONS ===== */
+body:before{
+ content:"";position:fixed;inset:-30%;pointer-events:none;z-index:-1;
+ background:
+ radial-gradient(circle at 20% 20%,#8b5cf614 0 12%,transparent 28%),
+ radial-gradient(circle at 80% 70%,#c084fc10 0 10%,transparent 25%);
+ animation:aurora 12s ease-in-out infinite alternate;
+}
+@keyframes aurora{0%{transform:translate3d(-2%,-1%,0) rotate(0deg) scale(1)}100%{transform:translate3d(3%,2%,0) rotate(7deg) scale(1.08)}}
+.hero{animation:heroIn .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes heroIn{from{opacity:0;transform:translateY(30px);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+.card{animation:cardIn .65s cubic-bezier(.2,.8,.2,1) both}
+@keyframes cardIn{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+.card:before{
+ content:"";position:absolute;inset:-2px;border-radius:20px;pointer-events:none;
+ background:conic-gradient(from 0deg,transparent,#a78bfa55,transparent 25%,#c084fc33,transparent 55%);
+ opacity:0;transition:.35s;filter:blur(7px)
+}
+.card:hover:before{opacity:1;animation:spinGlow 2.5s linear infinite}
+@keyframes spinGlow{to{transform:rotate(360deg)}}
+.card:hover .info{background:linear-gradient(90deg,#ffffff03,#8b5cf610,#ffffff03);background-size:200% 100%;animation:shine 1.5s linear infinite}
+@keyframes shine{to{background-position:-200% 0}}
+.add{position:relative;overflow:hidden;box-shadow:0 7px 24px #8b5cf633}
+.add:after{
+ content:"";position:absolute;top:-60%;left:-120%;width:55%;height:220%;
+ background:linear-gradient(90deg,transparent,#fff7,transparent);transform:rotate(18deg);
+ transition:.55s
+}
+.add:hover:after{left:140%}
+.add:hover{box-shadow:0 10px 35px #8b5cf655;filter:brightness(1.12)}
+.cartBtn{position:relative;overflow:hidden}
+.cartBtn:after{
+ content:"";position:absolute;inset:0;border-radius:inherit;
+ background:linear-gradient(120deg,transparent,#fff1,transparent);
+ transform:translateX(-120%);transition:.5s
+}
+.cartBtn:hover:after{transform:translateX(120%)}
+.cartPulse{animation:cartPulse .45s ease}
+@keyframes cartPulse{50%{transform:scale(1.13);box-shadow:0 0 25px #8b5cf655}}
+.overlay.open .drawer{animation:drawerIn .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes drawerIn{from{transform:translateX(100%);opacity:.5}to{transform:none;opacity:1}}
+.item{animation:itemIn .35s ease both}
+@keyframes itemIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+
 /* responsive */
 @media(max-width:1150px){.grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:850px){.grid{grid-template-columns:repeat(3,1fr)}}
@@ -138,7 +183,7 @@ footer{text-align:center;border-top:1px solid var(--line);padding:28px;color:#55
  .shop{padding:15px 10px 70px}
  .grid{grid-template-columns:repeat(2,1fr);gap:9px}
  .info{padding:10px}.info h3{font-size:12px;min-height:34px}
- .price{font-size:15px}.add{padding:8px;font-size:11px}
+ .price{font-size:15px;gap:5px}.oldPrice{font-size:10px}.add{padding:8px;font-size:11px}
  .bottom{align-items:stretch;flex-direction:column}
 }
 </style>
@@ -290,7 +335,7 @@ const games=[
 ];
 
 const products=games.map((g,i)=>({
- id:i+1,name:g[0],app:g[1],price:g[2],
+ id:i+1,name:g[0],app:g[1],price:4,oldPrice:g[2],
  image:`https://cdn.akamai.steamstatic.com/steam/apps/${g[1]}/library_600x900_2x.jpg`
 }));
 
@@ -312,7 +357,7 @@ function render(){
    <div class="info">
     <h3>${p.name}</h3>
     <div class="bottom">
-     <span class="price">${p.price} ₼</span>
+     <span class="price"><span class="salePrice">4 ₼</span><span class="oldPrice">${p.oldPrice} ₼</span></span>
      <button class="add" onclick="add(${p.id})">+ Səbət</button>
     </div>
    </div>
@@ -325,7 +370,7 @@ function add(id){
  const p=products.find(x=>x.id===id);
  const x=cart.find(x=>x.id===id);
  if(x)x.qty++;else cart.push({...p,qty:1});
- save();update();openCart();
+ save();update();animateCart();
 }
 
 function removeItem(id){
@@ -352,7 +397,7 @@ function update(){
    <img class="mini" src="${x.image}" alt="">
    <div class="itemInfo">
     <h4>${x.name}</h4>
-    <small>${x.price} ₼ × ${x.qty}</small>
+    <small><b>4 ₼</b> × ${x.qty} &nbsp; <s>${x.oldPrice || 4} ₼</s></small>
     <div class="qty">
      <button onclick="qty(${x.id},-1)">−</button>
      <span>${x.qty}</span>
@@ -366,6 +411,13 @@ function update(){
  document.getElementById("total").textContent=total+" ₼";
 }
 
+function animateCart(){
+ const b=document.querySelector(".cartBtn");
+ b.classList.remove("cartPulse");
+ void b.offsetWidth;
+ b.classList.add("cartPulse");
+ setTimeout(()=>b.classList.remove("cartPulse"),500);
+}
 function openCart(){document.getElementById("overlay").classList.add("open")}
 function closeCart(){document.getElementById("overlay").classList.remove("open")}
 function outside(e){if(e.target.id==="overlay")closeCart()}
