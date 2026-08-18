@@ -3,11 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#060609">
-<title>BakuShopAzerbaijan — V6</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+<meta name="theme-color" content="#08080b">
+<title>BakuShopAzerbaijan — V5</title>
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -18,7 +15,6 @@ body{
  font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
  overflow-x:hidden
 }
-
 body:before{
  content:"";
  position:fixed;
@@ -31,16 +27,13 @@ body:before{
  filter:blur(35px);
  animation:bg 16s ease-in-out infinite alternate
 }
-
 @keyframes bg{
  to{transform:translate(3%,2%) scale(1.08) rotate(6deg)}
 }
-
 @keyframes rise{
  from{opacity:0;transform:translateY(24px)}
  to{opacity:1;transform:none}
 }
-
 .top{
  position:sticky;
  top:0;
@@ -49,7 +42,6 @@ body:before{
  background:#060609d9;
  backdrop-filter:blur(20px)
 }
-
 .nav{
  max-width:1450px;
  margin:auto;
@@ -58,38 +50,31 @@ body:before{
  align-items:center;
  padding:13px 20px
 }
-
 .brand{
  font-size:19px;
  font-weight:950;
  letter-spacing:-.8px;
  margin-right:auto
 }
-
 .brand span{color:#c4b5fd}
-
 .btn,.select,.search{
  border:1px solid #ffffff16;
  background:#ffffff08;
  color:#fff;
  border-radius:12px
 }
-
 .btn{
  padding:10px 13px;
  cursor:pointer
 }
-
 .select{padding:10px}
 .select option{background:#111}
-
 .hero{
  max-width:1450px;
  margin:auto;
  padding:75px 20px 35px;
  animation:rise .7s
 }
-
 .pill{
  display:inline-flex;
  padding:8px 12px;
@@ -100,33 +85,28 @@ body:before{
  font-size:11px;
  font-weight:800
 }
-
 h1{
  font-size:clamp(48px,7vw,96px);
  line-height:.9;
  letter-spacing:-6px;
  margin:18px 0 20px
 }
-
 .gradient{
  background:linear-gradient(100deg,#fff,#c4b5fd,#f0abfc);
  color:transparent;
  background-clip:text;
  -webkit-background-clip:text
 }
-
 .hero p{
  max-width:720px;
  color:#9b9ba7;
  line-height:1.7
 }
-
 .notice{
  max-width:1450px;
  margin:auto;
  padding:0 20px 22px
 }
-
 .notice>div{
  padding:14px 16px;
  border:1px solid #facc1533;
@@ -136,28 +116,24 @@ h1{
  font-size:13px;
  line-height:1.6
 }
-
 .profile,.admin{
  max-width:1450px;
  margin:auto;
  padding:0 20px 20px;
  display:none
 }
-
 .panel{
  border:1px solid #ffffff13;
  background:#ffffff06;
  border-radius:18px;
  padding:15px
 }
-
 .profilegrid{
  display:flex;
  gap:14px;
  align-items:center;
  flex-wrap:wrap
 }
-
 .xp{
  height:8px;
  min-width:180px;
@@ -166,7 +142,6 @@ h1{
  border-radius:99px;
  overflow:hidden
 }
-
 .xp i{
  display:block;
  height:100%;
@@ -174,31 +149,26 @@ h1{
  background:linear-gradient(90deg,#8b5cf6,#f0abfc);
  transition:1s
 }
-
 .shop{
  max-width:1450px;
  margin:auto;
  padding:10px 20px 90px
 }
-
 .tools{
  display:flex;
  gap:10px;
  margin-bottom:18px
 }
-
 .search{
  flex:1;
  padding:14px;
  outline:0
 }
-
 .grid{
  display:grid;
  grid-template-columns:repeat(5,1fr);
  gap:15px
 }
-
 .card{
  background:linear-gradient(145deg,#15151b,#09090c);
  border:1px solid #ffffff12;
@@ -208,45 +178,37 @@ h1{
  animation:rise .55s both;
  transition:.3s
 }
-
 .card:hover{
  transform:translateY(-7px);
  border-color:#a78bfa66;
  box-shadow:0 30px 80px #000b,0 0 30px #8b5cf622
 }
-
 .cover{
  aspect-ratio:2/3;
  background:#111;
  overflow:hidden;
  position:relative
 }
-
 .cover img{
  width:100%;
  height:100%;
  object-fit:cover;
  transition:.6s
 }
-
 .card:hover img{transform:scale(1.07)}
-
 .cover:after{
  content:"";
  position:absolute;
  inset:0;
  background:linear-gradient(0deg,#000d,transparent 48%)
 }
-
 .info{padding:12px}
-
 .name{
  font-size:13px;
  font-weight:800;
  line-height:1.4;
  min-height:38px
 }
-
 .bar{
  display:flex;
  align-items:center;
@@ -254,12 +216,10 @@ h1{
  gap:8px;
  margin-top:12px
 }
-
 .price{
  font-weight:950;
  font-size:18px
 }
-
 .old{
  text-decoration:line-through;
  color:#777;
@@ -267,7 +227,6 @@ h1{
  margin-left:5px;
  font-weight:600
 }
-
 .add{
  border:0;
  border-radius:10px;
@@ -275,9 +234,22 @@ h1{
  background:linear-gradient(135deg,#7c3aed,#d8b4fe);
  color:#fff;
  font-weight:900;
- cursor:pointer
+ cursor:pointer;
+ position:relative;
+ overflow:hidden
 }
-
+.add:after{
+ content:"";
+ position:absolute;
+ top:-100%;
+ left:-130%;
+ width:50%;
+ height:300%;
+ background:#fff5;
+ transform:rotate(20deg);
+ transition:.5s
+}
+.add:hover:after{left:150%}
 .overlay{
  position:fixed;
  inset:0;
@@ -288,12 +260,10 @@ h1{
  pointer-events:none;
  transition:.25s
 }
-
 .overlay.open{
  opacity:1;
  pointer-events:auto
 }
-
 .drawer{
  position:absolute;
  right:0;
@@ -307,40 +277,33 @@ h1{
  flex-direction:column;
  animation:rise .3s
 }
-
 .items{
  flex:1;
  overflow:auto
 }
-
 .item{
  display:flex;
  gap:10px;
  padding:12px 0;
  border-bottom:1px solid #ffffff10
 }
-
 .item img{
  width:52px;
  height:72px;
  object-fit:cover;
  border-radius:8px
 }
-
 .grow{flex:1}
-
 .grow b{
  font-size:12px;
  line-height:1.4
 }
-
 .qty{
  display:flex;
  gap:6px;
  align-items:center;
  margin-top:7px
 }
-
 .qty button,.remove{
  background:#ffffff09;
  color:#fff;
@@ -350,17 +313,14 @@ h1{
  height:25px;
  cursor:pointer
 }
-
 .remove{
  border:0;
  color:#ff6684
 }
-
 .cartfoot{
  border-top:1px solid #ffffff14;
  padding-top:14px
 }
-
 .total{
  display:flex;
  justify-content:space-between;
@@ -368,7 +328,6 @@ h1{
  font-weight:950;
  margin-bottom:12px
 }
-
 .wa{
  width:100%;
  padding:14px;
@@ -379,7 +338,6 @@ h1{
  font-weight:950;
  cursor:pointer
 }
-
 .modal{
  display:none;
  position:fixed;
@@ -389,9 +347,7 @@ h1{
  padding:18px;
  background:#000d
 }
-
 .modal.show{display:grid}
-
 .box{
  width:min(430px,100%);
  padding:22px;
@@ -400,7 +356,6 @@ h1{
  border:1px solid #ffffff16;
  box-shadow:0 30px 100px #000
 }
-
 .field{
  width:100%;
  padding:12px;
@@ -411,7 +366,6 @@ h1{
  color:#fff;
  outline:0
 }
-
 .primary{
  width:100%;
  padding:12px;
@@ -422,7 +376,6 @@ h1{
  font-weight:900;
  cursor:pointer
 }
-
 .link{
  border:0;
  background:none;
@@ -430,20 +383,17 @@ h1{
  cursor:pointer;
  margin-top:9px
 }
-
 .orders{
  display:grid;
  gap:8px;
  margin-top:12px
 }
-
 .order{
- padding:14px;
+ padding:12px;
  border:1px solid #ffffff12;
  border-radius:12px;
  background:#ffffff06
 }
-
 .confirm{
  margin-top:8px;
  border:0;
@@ -453,32 +403,6 @@ h1{
  font-weight:900;
  cursor:pointer
 }
-
-.reject{
- margin-top:8px;
- border:0;
- border-radius:9px;
- padding:8px 11px;
- background:#ff5577;
- color:white;
- font-weight:900;
- cursor:pointer
-}
-
-.adminHead{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:10px;
- flex-wrap:wrap
-}
-
-.adminStats{
- color:#aaa;
- font-size:13px;
- margin-top:8px
-}
-
 .toast{
  position:fixed;
  left:50%;
@@ -494,41 +418,10 @@ h1{
  box-shadow:0 15px 50px #0008;
  transition:.25s
 }
-
 .toast.show{
  opacity:1;
  transform:translate(-50%,0)
 }
-
-.empty{
- padding:60px 20px;
- text-align:center;
- color:#777
-}
-
-.status{
- display:inline-block;
- padding:4px 8px;
- border-radius:99px;
- font-size:10px;
- font-weight:800
-}
-
-.pending{
- background:#facc1520;
- color:#facc15
-}
-
-.confirmed{
- background:#25d36620;
- color:#25d366
-}
-
-.cancelled{
- background:#ff557720;
- color:#ff5577
-}
-
 footer{
  border-top:1px solid #ffffff10;
  text-align:center;
@@ -536,55 +429,38 @@ footer{
  padding:25px;
  font-size:11px
 }
-
 @media(max-width:1150px){
  .grid{grid-template-columns:repeat(4,1fr)}
 }
-
 @media(max-width:850px){
  .grid{grid-template-columns:repeat(3,1fr)}
 }
-
 @media(max-width:600px){
-
  .nav{padding:10px}
-
- .brand{
-  font-size:14px
- }
-
+ .brand{font-size:14px}
  .nav .btn,.select{
   padding:8px;
   font-size:11px
  }
-
  .hero{
   padding:55px 14px 30px
  }
-
  .hero h1{
   font-size:50px;
   letter-spacing:-3px
  }
-
  .notice,.shop,.profile,.admin{
   padding-left:9px;
   padding-right:9px
  }
-
  .grid{
   grid-template-columns:repeat(2,1fr);
   gap:8px
  }
-
  .info{padding:9px}
-
  .name{font-size:11px}
-
  .bar{display:block}
-
  .price{margin-bottom:8px}
-
  .add{width:100%}
 }
 </style>
@@ -593,12 +469,9 @@ footer{
 <body>
 
 <header class="top">
-
 <div class="nav">
 
-<div class="brand">
-BakuShop<span>Azerbaijan</span>
-</div>
+<div class="brand">BakuShop<span>Azerbaijan</span></div>
 
 <select class="select" id="lang" onchange="setLang(this.value)">
 <option value="az">AZ</option>
@@ -607,41 +480,31 @@ BakuShop<span>Azerbaijan</span>
 <option value="ru">RU</option>
 </select>
 
-<button class="btn" id="accountBtn" onclick="openAuth()">
-👤 Hesab
-</button>
+<button class="btn" id="accountBtn" onclick="openAuth()">👤 Hesab</button>
 
 <button class="btn" onclick="openCart()">
 🛒 <span id="cartCount">0</span>
 </button>
 
 </div>
-
 </header>
 
-
 <section class="hero">
-
 <span class="pill" id="tag"></span>
 
 <h1 id="title"></h1>
 
 <p id="hero"></p>
-
 </section>
-
 
 <section class="notice">
 <div id="notice"></div>
 </section>
 
-
 <section class="profile" id="profile">
-
 <div class="panel profilegrid">
 
 <b id="userEmail"></b>
-
 <b id="userLevel"></b>
 
 <div class="xp">
@@ -650,43 +513,24 @@ BakuShop<span>Azerbaijan</span>
 
 <span id="xpText"></span>
 
-<button class="btn" onclick="logout()" id="logoutBtn">
-Çıxış
-</button>
+<button class="btn" onclick="logout()" id="logoutBtn"></button>
 
 </div>
-
 </section>
 
-
 <section class="admin" id="admin">
-
 <div class="panel">
 
-<div class="adminHead">
+<b>🛡️ Admin</b>
 
-<div>
+<div id="adminStats"></div>
 
-<b>🛡️ BakuShop Admin</b>
-
-<div class="adminStats" id="adminStats">
-Yüklənir...
-</div>
-
-</div>
-
-<button class="btn" onclick="loadAdminOrders()">
-🔄 Yenilə
-</button>
-
-</div>
+<div id="adminUsers"></div>
 
 <div class="orders" id="orders"></div>
 
 </div>
-
 </section>
-
 
 <main class="shop">
 
@@ -696,7 +540,7 @@ Yüklənir...
 id="search"
 class="search"
 oninput="render()"
-placeholder="🔎 Oyun axtar..."
+placeholder=""
 >
 
 </div>
@@ -705,11 +549,9 @@ placeholder="🔎 Oyun axtar..."
 
 </main>
 
-
 <footer>
 BakuShopAzerbaijan • ₼ AZN • WhatsApp
 </footer>
-
 
 <div
 class="overlay"
@@ -739,7 +581,7 @@ onclick="closeCart()"
 
 <div class="total">
 
-<span id="sum">Cəmi</span>
+<span id="sum"></span>
 
 <span id="total">0 ₼</span>
 
@@ -749,29 +591,18 @@ onclick="closeCart()"
 class="wa"
 id="orderBtn"
 onclick="order()"
->
-WhatsApp ilə sifariş et →
-</button>
+></button>
 
 </div>
 
 </aside>
-
 </div>
-
 
 <div class="modal" id="auth">
 
 <div class="box">
 
-<h2 id="authTitle">Hesab</h2>
-
-<input
-class="field"
-id="username"
-type="text"
-placeholder="İstifadəçi adı"
->
+<h2 id="authTitle"></h2>
 
 <input
 class="field"
@@ -791,17 +622,13 @@ placeholder="Şifrə (ən azı 8 simvol)"
 class="primary"
 id="authSubmit"
 onclick="authSubmit()"
->
-Qeydiyyatdan keç
-</button>
+></button>
 
 <button
 class="link"
 id="authToggle"
 onclick="toggleAuth()"
->
-Artıq hesabım var
-</button>
+></button>
 
 <button
 class="link"
@@ -811,50 +638,13 @@ Bağla
 </button>
 
 </div>
-
 </div>
-
 
 <div class="toast" id="toast"></div>
 
-
 <script>
 
-/* ============================================================
-   SUPABASE CONFIG
-   ============================================================ */
-
-const SUPABASE_URL =
-"BURAYA_SUPABASE_URL";
-
-const SUPABASE_ANON_KEY =
-"BURAYA_SUPABASE_ANON_KEY";
-
-
-const { createClient } =
-supabase;
-
-
-const db =
-createClient(
-SUPABASE_URL,
-SUPABASE_ANON_KEY
-);
-
-
-/* ============================================================
-   SETTINGS
-   ============================================================ */
-
 const WA="994555842012";
-
-const ADMIN_EMAIL=
-"gfg531745@gmail.com";
-
-
-/* ============================================================
-   LANGUAGES
-   ============================================================ */
 
 const I18N={
 
@@ -923,11 +713,6 @@ logout:"Выйти"
 }
 
 };
-
-
-/* ============================================================
-   GAMES
-   ============================================================ */
 
 const raw=[
 
@@ -1025,94 +810,45 @@ const raw=[
 
 ];
 
-
 const games=raw.map((x,i)=>({
-
 id:i+1,
 name:x[0],
 app:x[1],
 old:x[2],
 price:4,
-img:
-`https://cdn.akamai.steamstatic.com/steam/apps/${x[1]}/library_600x900_2x.jpg`
-
+img:`https://cdn.akamai.steamstatic.com/steam/apps/${x[1]}/library_600x900_2x.jpg`
 }));
 
-
-/* ============================================================
-   STATE
-   ============================================================ */
-
-let cart=
-JSON.parse(
-localStorage.getItem("bsa_cart_v6")||"[]"
-);
-
-let currentUser=null;
-let profile=null;
-
-let lang=
-localStorage.getItem("bsa_lang_v6")||"az";
-
+let cart=JSON.parse(localStorage.getItem("bsa_cart_v5")||"[]");
+let users=JSON.parse(localStorage.getItem("bsa_users_v5")||"[]");
+let orders=JSON.parse(localStorage.getItem("bsa_orders_v5")||"[]");
+let current=JSON.parse(localStorage.getItem("bsa_current_v5")||"null");
+let lang=localStorage.getItem("bsa_lang_v5")||"az";
 let mode="signup";
 
-
-/* ============================================================
-   SAVE CART
-   ============================================================ */
-
-function saveCart(){
-
-localStorage.setItem(
-"bsa_cart_v6",
-JSON.stringify(cart)
-);
-
+function save(){
+localStorage.setItem("bsa_cart_v5",JSON.stringify(cart));
+localStorage.setItem("bsa_users_v5",JSON.stringify(users));
+localStorage.setItem("bsa_orders_v5",JSON.stringify(orders));
 }
 
-
-/* ============================================================
-   TOAST
-   ============================================================ */
-
-function toast(text){
-
-const t=
-document.getElementById("toast");
-
-t.textContent=text;
-
+function toast(x){
+let t=document.getElementById("toast");
+t.textContent=x;
 t.classList.add("show");
-
-setTimeout(
-()=>t.classList.remove("show"),
-2400
-);
-
+setTimeout(()=>t.classList.remove("show"),2200);
 }
-
-
-/* ============================================================
-   RENDER
-   ============================================================ */
 
 function render(){
 
-const q=
-document
-.getElementById("search")
-.value
-.toLowerCase()
-.trim();
+let q=document.getElementById("search").value.toLowerCase();
 
-const list=
-games.filter(
+let list=games.filter(
 g=>g.name.toLowerCase().includes(q)
 );
 
-document.getElementById("grid").innerHTML=
-
-list.map((g,i)=>`
+document.getElementById("grid").innerHTML=list.map(
+(g,i)=>`
 
 <article
 class="card"
@@ -1124,7 +860,7 @@ style="animation-delay:${Math.min(i,20)*18}ms"
 <img
 loading="lazy"
 src="${g.img}"
-alt="${escapeHtml(g.name)}"
+alt="${g.name}"
 onerror="this.style.opacity=0"
 >
 
@@ -1133,7 +869,7 @@ onerror="this.style.opacity=0"
 <div class="info">
 
 <div class="name">
-${escapeHtml(g.name)}
+${g.name}
 </div>
 
 <div class="bar">
@@ -1164,75 +900,29 @@ updateCart();
 
 }
 
-
-/* ============================================================
-   HTML ESCAPE
-   ============================================================ */
-
-function escapeHtml(text){
-
-return String(text)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-
-}
-
-
-/* ============================================================
-   CART
-   ============================================================ */
-
 function add(id){
 
-const x=
-cart.find(x=>x.id===id);
+let x=cart.find(x=>x.id===id);
 
-if(x)
-x.qty++;
-else
-cart.push({
-id,
-qty:1
-});
+x?x.qty++:cart.push({id,qty:1});
 
-saveCart();
+save();
 updateCart();
-
 toast("🛒 Səbətə əlavə edildi");
 
 }
 
-
 function updateCart(){
 
-const n=
-cart.reduce(
-(a,x)=>a+x.qty,
-0
-);
+let n=cart.reduce((a,x)=>a+x.qty,0);
 
-document.getElementById(
-"cartCount"
-).textContent=n;
+document.getElementById("cartCount").textContent=n;
 
-
-document.getElementById(
-"items"
-).innerHTML=
-
-cart.length
-
+document.getElementById("items").innerHTML=cart.length
 ?
-
 cart.map(x=>{
 
-const g=
-games.find(g=>g.id===x.id);
-
-if(!g)return "";
+let g=games.find(g=>g.id===x.id);
 
 return `
 
@@ -1242,16 +932,11 @@ return `
 
 <div class="grow">
 
-<b>
-${escapeHtml(g.name)}
-</b>
+<b>${g.name}</b>
 
 <div style="margin-top:4px">
 
-<strong>
-4 ₼
-</strong>
-
+<strong>4 ₼</strong>
 × ${x.qty}
 
 <s style="color:#777;font-size:11px">
@@ -1262,15 +947,11 @@ ${g.old} ₼
 
 <div class="qty">
 
-<button onclick="change(${g.id},-1)">
-−
-</button>
+<button onclick="change(${g.id},-1)">−</button>
 
 ${x.qty}
 
-<button onclick="change(${g.id},1)">
-+
-</button>
+<button onclick="change(${g.id},1)">+</button>
 
 </div>
 
@@ -1288,602 +969,81 @@ onclick="removeItem(${g.id})"
 `;
 
 }).join("")
-
 :
+"<div style='padding:60px;text-align:center;color:#777'>Səbət boşdur 🎮</div>";
 
-`<div class="empty">
-Səbət boşdur 🎮
-</div>`;
-
-
-document.getElementById(
-"total"
-).textContent=
-n*4+" ₼";
+document.getElementById("total").textContent=n*4+" ₼";
 
 }
 
-
 function change(id,d){
 
-const x=
-cart.find(x=>x.id===id);
+let x=cart.find(x=>x.id===id);
 
 if(!x)return;
 
 x.qty+=d;
 
-if(x.qty<=0){
-
+if(x.qty<1)
 removeItem(id);
-return;
-
-}
-
-saveCart();
+else{
+save();
 updateCart();
-
 }
 
+}
 
 function removeItem(id){
 
-cart=
-cart.filter(
-x=>x.id!==id
-);
+cart=cart.filter(x=>x.id!==id);
 
-saveCart();
+save();
 updateCart();
 
 }
 
-
 function openCart(){
-
-document
-.getElementById("cartOverlay")
-.classList.add("open");
-
+document.getElementById("cartOverlay").classList.add("open");
 }
-
 
 function closeCart(){
-
-document
-.getElementById("cartOverlay")
-.classList.remove("open");
-
+document.getElementById("cartOverlay").classList.remove("open");
 }
 
+function order(){
 
-/* ============================================================
-   AUTH
-   ============================================================ */
+if(!cart.length)
+return toast("Səbət boşdur");
 
-function openAuth(){
+let text="🎮 BakuShopAzerbaijan SİFARİŞİ\n\n";
 
-document
-.getElementById("auth")
-.classList.add("show");
+cart.forEach((x,i)=>{
 
-syncAuth();
+let g=games.find(g=>g.id===x.id);
 
-}
-
-
-function closeAuth(){
-
-document
-.getElementById("auth")
-.classList.remove("show");
-
-}
-
-
-function toggleAuth(){
-
-mode=
-mode==="signup"
-?"login"
-:"signup";
-
-syncAuth();
-
-}
-
-
-function syncAuth(){
-
-const t=I18N[lang];
-
-document.getElementById(
-"authTitle"
-).textContent=
-mode==="signup"
-?t.signup
-:t.login;
-
-document.getElementById(
-"authSubmit"
-).textContent=
-mode==="signup"
-?t.signup
-:t.login;
-
-document.getElementById(
-"authToggle"
-).textContent=
-mode==="signup"
-?"Artıq hesabım var"
-:"Hesab yarat";
-
-document.getElementById(
-"username"
-).style.display=
-mode==="signup"
-?"block"
-:"none";
-
-}
-
-
-/* ============================================================
-   SUPABASE AUTH
-   ============================================================ */
-
-async function authSubmit(){
-
-const email=
-document
-.getElementById("email")
-.value
-.trim()
-.toLowerCase();
-
-const password=
-document
-.getElementById("pass")
-.value;
-
-const username=
-document
-.getElementById("username")
-.value
-.trim();
-
-
-if(!email || password.length<8){
-
-toast(
-"⚠️ E-poçt və ən azı 8 simvolluq şifrə lazımdır"
-);
-
-return;
-
-}
-
-
-if(
-mode==="signup" &&
-!username
-){
-
-toast(
-"⚠️ İstifadəçi adı yaz"
-);
-
-return;
-
-}
-
-
-try{
-
-if(mode==="signup"){
-
-const {data,error}=
-
-await db.auth.signUp({
-
-email,
-password,
-
-options:{
-data:{
-username
-}
-}
+text+=`${i+1}. ${g.name}\n`;
+text+=`${x.qty} × 4 ₼\n\n`;
 
 });
 
+let total=cart.reduce((a,x)=>a+x.qty,0)*4;
 
-if(error)
-throw error;
+text+="💰 Cəmi: "+total+" ₼";
 
+if(current){
 
-if(!data.session){
-
-toast(
-"📧 E-poçtuna təsdiq linki göndərildi"
-);
-
-return;
-
-}
-
-toast("✅ Hesab yaradıldı");
-
-}else{
-
-const {error}=
-
-await db.auth.signInWithPassword({
-
-email,
-password
-
+orders.push({
+id:Date.now(),
+email:current.email,
+items:cart.map(x=>({id:x.id,qty:x.qty})),
+total,
+status:"pending",
+date:new Date().toLocaleString()
 });
 
-if(error)
-throw error;
-
-toast("👋 Xoş gəldin");
+save();
 
 }
-
-
-closeAuth();
-
-await loadCurrentUser();
-
-}catch(error){
-
-console.error(error);
-
-toast(
-"❌ "+error.message
-);
-
-}
-
-}
-
-
-/* ============================================================
-   CURRENT USER
-   ============================================================ */
-
-async function loadCurrentUser(){
-
-const {
-data:{
-user
-}
-}=
-
-await db.auth.getUser();
-
-currentUser=user;
-
-if(!user){
-
-profile=null;
-refreshUserUI();
-
-return;
-
-}
-
-
-const {
-data,
-error
-}=
-
-await db
-.from("profiles")
-.select("*")
-.eq("id",user.id)
-.single();
-
-
-if(error){
-
-console.error(error);
-
-toast(
-"⚠️ Profil yüklənmədi"
-);
-
-return;
-
-}
-
-
-profile=data;
-
-refreshUserUI();
-
-if(isAdmin()){
-
-showAdmin();
-
-await loadAdminOrders();
-
-subscribeAdmin();
-
-}else{
-
-document
-.getElementById("admin")
-.style.display="none";
-
-}
-
-}
-
-
-/* ============================================================
-   ADMIN
-   ============================================================ */
-
-function isAdmin(){
-
-return !!currentUser &&
-currentUser.email &&
-currentUser.email.toLowerCase()
-===ADMIN_EMAIL;
-
-}
-
-
-function refreshUserUI(){
-
-const p=
-document.getElementById("profile");
-
-const a=
-document.getElementById("admin");
-
-if(!currentUser || !profile){
-
-p.style.display="none";
-a.style.display="none";
-
-document.getElementById(
-"accountBtn"
-).textContent=
-I18N[lang].account;
-
-return;
-
-}
-
-
-p.style.display="block";
-
-document.getElementById(
-"userEmail"
-).textContent=
-profile.email||currentUser.email;
-
-
-document.getElementById(
-"userLevel"
-).textContent=
-"LV."+(
-profile.level||1
-);
-
-
-const xp=
-profile.xp||0;
-
-
-document.getElementById(
-"xpText"
-).textContent=
-`${xp} XP • 🎁 ${profile.gift_games||0}`;
-
-
-document.getElementById(
-"xpBar"
-).style.width=
-Math.min(
-100,
-xp%100
-)+"%";
-
-
-document.getElementById(
-"logoutBtn"
-).textContent=
-I18N[lang].logout;
-
-
-document.getElementById(
-"accountBtn"
-).textContent=
-"👤 "+
-(
-profile.username||
-currentUser.email.split("@")[0]
-);
-
-
-if(isAdmin())
-showAdmin();
-else
-a.style.display="none";
-
-}
-
-
-function showAdmin(){
-
-document
-.getElementById("admin")
-.style.display="block";
-
-}
-
-
-/* ============================================================
-   CREATE ORDER
-   ============================================================ */
-
-async function order(){
-
-if(!cart.length){
-
-toast("Səbət boşdur");
-return;
-
-}
-
-
-if(!currentUser){
-
-toast(
-"🔐 Sifariş üçün əvvəlcə hesaba daxil ol"
-);
-
-openAuth();
-
-return;
-
-}
-
-
-const validItems=
-cart
-.map(x=>{
-
-const g=
-games.find(g=>g.id===x.id);
-
-if(!g)return null;
-
-return {
-game:g,
-qty:x.qty
-};
-
-})
-.filter(Boolean);
-
-
-if(!validItems.length){
-
-toast("Səbətdə düzgün oyun yoxdur");
-return;
-
-}
-
-
-const total=
-validItems.reduce(
-(sum,x)=>sum+x.qty*4,
-0
-);
-
-
-try{
-
-/*
-   ORDER
-*/
-
-const {
-data:orderRow,
-error:orderError
-}=
-
-await db
-.from("orders")
-.insert({
-
-user_id:currentUser.id,
-total:total,
-status:"pending"
-
-})
-.select()
-.single();
-
-
-if(orderError)
-throw orderError;
-
-
-/*
-   ORDER ITEMS
-*/
-
-const items=
-validItems.map(x=>({
-
-order_id:orderRow.id,
-
-game_id:x.game.id,
-
-quantity:x.qty,
-
-price:4
-
-}));
-
-
-const {
-error:itemError
-}=
-
-await db
-.from("order_items")
-.insert(items);
-
-
-if(itemError){
-
-/*
-   Item əlavə olunmadısa sifarişi sil
-*/
-
-await db
-.from("orders")
-.delete()
-.eq("id",orderRow.id);
-
-throw itemError;
-
-}
-
-
-/*
-   WHATSAPP MESAJI
-*/
-
-let text=
-"🎮 BakuShopAzerbaijan SİFARİŞİ\n\n";
-
-validItems.forEach((x,i)=>{
-
-text+=
-`${i+1}. ${x.game.name}\n`+
-`${x.qty} × 4 ₼\n\n`;
-
-});
-
-text+=
-"💰 Cəmi: "+
-total+
-" ₼\n\n";
-
-text+=
-"🆔 Sifariş ID: "+
-orderRow.id;
-
 
 window.open(
 "https://wa.me/"+WA+
@@ -1892,495 +1052,339 @@ encodeURIComponent(text),
 "_blank"
 );
 
-
-/*
-   SƏBƏTİ TƏMİZLƏ
-*/
-
 cart=[];
-
-saveCart();
+save();
 updateCart();
 closeCart();
 
-toast(
-"✅ Sifariş yaradıldı və adminə göndərildi"
+toast("✅ Sifariş yaradıldı • səbət təmizləndi");
+
+}
+
+function openAuth(){
+
+document.getElementById("auth").classList.add("show");
+
+syncAuth();
+
+}
+
+function closeAuth(){
+document.getElementById("auth").classList.remove("show");
+}
+
+function toggleAuth(){
+
+mode=mode==="signup"?"login":"signup";
+
+syncAuth();
+
+}
+
+function syncAuth(){
+
+let t=I18N[lang];
+
+document.getElementById("authTitle").textContent=t.account;
+
+document.getElementById("authSubmit").textContent=
+mode==="signup"?t.signup:t.login;
+
+document.getElementById("authToggle").textContent=
+mode==="signup"?"Artıq hesabım var":"Hesab yarat";
+
+}
+
+function authSubmit(){
+
+let email=document.getElementById("email").value.trim().toLowerCase();
+
+let pass=document.getElementById("pass").value;
+
+if(!email||pass.length<8)
+return toast("⚠️ E-poçt və ən azı 8 simvolluq şifrə lazımdır");
+
+if(mode==="signup"){
+
+if(users.some(u=>u.email===email))
+return toast("Bu hesab artıq var");
+
+users.push({
+email,
+pass,
+xp:0,
+gifts:0,
+admin:users.length===0
+});
+
+}
+
+let u=users.find(
+u=>u.email===email&&u.pass===pass
 );
 
-}catch(error){
+if(!u)
+return toast("❌ E-poçt və ya şifrə yanlışdır");
 
-console.error(error);
+current={email};
 
-toast(
-"❌ Sifariş xətası: "+
-error.message
+localStorage.setItem(
+"bsa_current_v5",
+JSON.stringify(current)
 );
 
-}
+save();
+
+closeAuth();
+
+refreshUser();
+
+toast("👋 Xoş gəldin!");
 
 }
 
+function logout(){
 
-/* ============================================================
-   ADMIN ORDERS
-   ============================================================ */
+current=null;
 
-async function loadAdminOrders(){
+localStorage.removeItem("bsa_current_v5");
 
-if(!isAdmin())
-return;
-
-
-const {
-data,
-error
-}=
-
-await db
-.from("orders")
-.select(`
-    *,
-    profiles:user_id(
-        email,
-        username
-    ),
-    order_items(
-        game_id,
-        quantity,
-        price
-    )
-`)
-.order("created_at",{ascending:false});
-
-
-if(error){
-
-console.error(error);
-
-document.getElementById(
-"orders"
-).innerHTML=
-`<div class="order">
-❌ Sifarişlər yüklənmədi:<br>
-${escapeHtml(error.message)}
-</div>`;
-
-return;
+refreshUser();
 
 }
 
+function levelInfo(xp){
 
-const pending=
-data.filter(
-x=>x.status==="pending"
-).length;
+let level=1;
+let need=100;
+let left=xp;
 
+while(left>=need){
 
-document.getElementById(
-"adminStats"
-).textContent=
-`👥 Sifariş: ${data.length} • ⏳ Gözləyən: ${pending}`;
+left-=need;
+level++;
+need=100+(level-1)*50;
 
+}
 
-if(!data.length){
+return{level,left,need};
 
-document.getElementById(
-"orders"
-).innerHTML=
-`<div class="empty">
-Hələ sifariş yoxdur 📦
-</div>`;
+}
+
+function refreshUser(){
+
+let p=document.getElementById("profile");
+let a=document.getElementById("admin");
+
+if(!current){
+
+p.style.display="none";
+a.style.display="none";
+
+document.getElementById("accountBtn").textContent=
+I18N[lang].account;
 
 return;
 
 }
 
+let u=users.find(u=>u.email===current.email);
 
-document.getElementById(
-"orders"
-).innerHTML=
+if(!u){
+logout();
+return;
+}
 
-data.map(o=>{
+p.style.display="block";
 
-const customer=
-o.profiles?.email||
-"Naməlum istifadəçi";
+document.getElementById("userEmail").textContent=u.email;
 
+let l=levelInfo(u.xp||0);
 
-const items=
-(o.order_items||[])
-.map(x=>{
+document.getElementById("userLevel").textContent="LV."+l.level;
 
-const g=
-games.find(
-g=>g.id===x.game_id
+document.getElementById("xpText").textContent=
+`${l.left}/${l.need} XP • 🎁 ${u.gifts||0}`;
+
+document.getElementById("xpBar").style.width=
+Math.min(100,l.left/l.need*100)+"%";
+
+document.getElementById("logoutBtn").textContent=
+I18N[lang].logout;
+
+document.getElementById("accountBtn").textContent=
+"👤 "+u.email.split("@")[0];
+
+if(u.admin){
+
+a.style.display="block";
+renderAdmin();
+
+}else{
+
+a.style.display="none";
+
+}
+
+}
+
+function renderAdmin(){
+
+let pending=orders.filter(
+o=>o.status==="pending"
 );
 
-return `
-${escapeHtml(
-g?.name||
-"Oyun #"+x.game_id
-)}
- × ${x.quantity}
-`;
+document.getElementById("adminStats").textContent=
+`İstifadəçi: ${users.length} • Gözləyən sifariş: ${pending.length}`;
 
-})
-.join("<br>");
+document.getElementById("adminUsers").innerHTML=
+"<div style='margin-top:10px;font-size:12px;color:#aaa'>Admin seçimi:</div>"+
+users.map(
+u=>
+`<button class="btn"
+style="margin:7px 5px 0 0"
+onclick="toggleAdmin('${encodeURIComponent(u.email)}')">
+${u.admin?"🛡️ ":""}${u.email}
+</button>`
+).join("");
 
-
-const statusClass=
-o.status==="pending"
-?"pending"
-:
-o.status==="confirmed"
-?"confirmed"
-:"cancelled";
-
-
-const buttons=
-
-o.status==="pending"
-
+document.getElementById("orders").innerHTML=
+pending.length
 ?
+pending.map(
+o=>
+`<div class="order">
 
-`
+<b>📦 ${o.email}</b>
+
+<br>
+
+<small>
+${o.date} • ${o.total} ₼
+</small>
+
+<br>
+
+${o.items.map(
+x=>{
+let g=games.find(g=>g.id===x.id);
+return `${g.name} × ${x.qty}`;
+}
+).join("<br>")}
+
+<br>
 
 <button
 class="confirm"
-onclick="confirmOrder('${o.id}')"
+onclick="confirmOrder(${o.id})"
 >
 ✓ Təsdiqlə və XP ver
 </button>
 
-<button
-class="reject"
-onclick="cancelOrder('${o.id}')"
->
-✕ Ləğv et
-</button>
-
-`
-
-:"";
-
-
-return `
-
-<div class="order">
-
-<b>
-📦 ${escapeHtml(customer)}
-</b>
-
-<br>
-
-<small>
-🆔 ${o.id}
-</small>
-
-<br>
-
-<small>
-💰 ${o.total||0} ₼
-</small>
-
-<br>
-
-<small>
-<span class="status ${statusClass}">
-${escapeHtml(o.status)}
-</span>
-</small>
-
-<div style="margin-top:9px;color:#bbb;font-size:12px">
-
-${items}
-
-</div>
-
-${buttons}
-
-</div>
-
-`;
-
-}).join("");
+</div>`
+).join("")
+:
+"<small style='color:#777'>Gözləyən sifariş yoxdur.</small>";
 
 }
 
+function toggleAdmin(e){
 
-/* ============================================================
-   CONFIRM ORDER
-   ============================================================ */
-
-async function confirmOrder(id){
-
-if(!isAdmin()){
-
-toast("⛔ Admin icazəsi yoxdur");
-return;
-
-}
-
-
-const {
-error
-}=
-
-await db
-.from("orders")
-.update({
-status:"confirmed"
-})
-.eq("id",id)
-.eq("status","pending");
-
-
-if(error){
-
-toast(
-"❌ "+error.message
+let u=users.find(
+u=>u.email===decodeURIComponent(e)
 );
 
-return;
+if(u){
+
+u.admin=!u.admin;
+
+save();
+refreshUser();
 
 }
 
-
-toast(
-"✅ Sifariş təsdiqləndi • XP server tərəfindən verildi"
-);
-
-await loadAdminOrders();
-
 }
 
+function confirmOrder(id){
 
-/* ============================================================
-   CANCEL ORDER
-   ============================================================ */
+let o=orders.find(o=>o.id===id);
 
-async function cancelOrder(id){
+if(!o)return;
 
-if(!isAdmin())
-return;
+let u=users.find(u=>u.email===o.email);
 
+if(!u)return;
 
-const {
-error
-}=
+let before=levelInfo(u.xp||0).level;
 
-await db
-.from("orders")
-.update({
-status:"cancelled"
-})
-.eq("id",id)
-.eq("status","pending");
+u.xp=
+(u.xp||0)+
+o.items.reduce((a,x)=>a+x.qty,0)*25;
 
+let after=levelInfo(u.xp).level;
 
-if(error){
+[3,5,10,15,20,25].forEach(n=>{
 
-toast(
-"❌ "+error.message
-);
+if(before<n&&after>=n)
+u.gifts=(u.gifts||0)+1;
 
-return;
+});
 
-}
+o.status="confirmed";
 
+save();
 
-toast("❌ Sifariş ləğv edildi");
+refreshUser();
 
-await loadAdminOrders();
+toast("✅ Sifariş təsdiqləndi • XP verildi");
 
 }
-
-
-/* ============================================================
-   ADMIN REALTIME
-   ============================================================ */
-
-function subscribeAdmin(){
-
-if(!isAdmin())
-return;
-
-
-db
-.channel("admin-orders-live")
-.on(
-"postgres_changes",
-{
-event:"*",
-schema:"public",
-table:"orders"
-},
-payload=>{
-
-console.log(
-"Yeni sifariş dəyişiklik:",
-payload
-);
-
-loadAdminOrders();
-
-}
-)
-.subscribe();
-
-}
-
-
-/* ============================================================
-   LOGOUT
-   ============================================================ */
-
-async function logout(){
-
-await db.auth.signOut();
-
-currentUser=null;
-profile=null;
-
-refreshUserUI();
-
-toast("👋 Çıxış edildi");
-
-}
-
-
-/* ============================================================
-   LANGUAGE
-   ============================================================ */
 
 function setLang(l){
 
 lang=l;
 
-localStorage.setItem(
-"bsa_lang_v6",
-l
-);
+localStorage.setItem("bsa_lang_v5",l);
 
 applyLang();
 
 }
 
-
 function applyLang(){
 
-const t=I18N[lang];
+let t=I18N[lang];
 
-document.getElementById(
-"tag"
-).textContent=t.tag;
+document.getElementById("tag").textContent=t.tag;
 
-document.getElementById(
-"title"
-).innerHTML=t.title;
+document.getElementById("title").innerHTML=t.title;
 
-document.getElementById(
-"hero"
-).textContent=t.hero;
+document.getElementById("hero").textContent=t.hero;
 
-document.getElementById(
-"notice"
-).textContent=t.notice;
+document.getElementById("notice").textContent=t.notice;
 
-document.getElementById(
-"search"
-).placeholder=t.search;
+document.getElementById("search").placeholder=t.search;
 
-document.getElementById(
-"cartTitle"
-).textContent=t.cart;
+document.getElementById("cartTitle").textContent=t.cart;
 
-document.getElementById(
-"sum"
-).textContent=t.sum;
+document.getElementById("sum").textContent=t.sum;
 
-document.getElementById(
-"orderBtn"
-).textContent=t.order;
+document.getElementById("orderBtn").textContent=t.order;
 
-document.getElementById(
-"lang"
-).value=lang;
+document.getElementById("accountBtn").textContent=
+current
+?
+"👤 "+current.email.split("@")[0]
+:
+t.account;
 
 syncAuth();
 
 render();
 
-refreshUserUI();
-
 }
-
-
-/* ============================================================
-   AUTH STATE CHANGES
-   ============================================================ */
-
-db.auth.onAuthStateChange(
-async(event,session)=>{
-
-console.log(
-"Auth:",
-event
-);
-
-if(session){
-
-currentUser=session.user;
-
-}else{
-
-currentUser=null;
-profile=null;
-
-}
-
-refreshUserUI();
-
-}
-);
-
-
-/* ============================================================
-   START
-   ============================================================ */
-
-async function start(){
 
 applyLang();
-
-updateCart();
-
-const {
-data:{
-session
-}
-}=
-
-await db.auth.getSession();
-
-
-if(session){
-
-currentUser=session.user;
-
-await loadCurrentUser();
-
-}else{
-
-refreshUserUI();
-
-}
-
-}
-
-
-start();
+refreshUser();
 
 </script>
 
